@@ -1,0 +1,27 @@
+<div id="content">
+  <div style="flex-basis: 100%;" (click)="close()">
+  </div>
+  <div id="footer">
+    <div class="container">
+      <ion-toolbar style="grid-area: header; margin-top: 1em;">
+        <ion-buttons slot="end" >
+          <ion-icon slot="icon-only" name="close" color="primary" (click)="close()"></ion-icon>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="sub-container">
+        <div class="main-left main">{{'COUPON.CODETEXT' | translate}}:</div>
+        <div class="main-right main">{{details.coupon_token}}</div>
+        <div class="sub-title" style="text-align: left;">{{'MISC.AMOUNTTEXT' | translate}}: € {{stripDecimal(details.amount)}}</div>
+        <div class="desc" style="text-align: left;">{{'MISC.CREATIONDATE' | translate}} : {{getDateFromTms(details.expiry_date_tms)}}</div>
+        <div class="buttons button-container">
+          <!--button class="redeem button" (click)="redeem()">
+            {{'COUPON.REDEEMTEXT' | translate}}
+          </button-->
+          <button class="delete button" (click)="close()" id="close-btn">
+            {{'MISC.CLOSE' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

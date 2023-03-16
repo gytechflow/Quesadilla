@@ -1,0 +1,120 @@
+.footer-btn {
+  /*width: 100%;
+  bottom: 0;
+  position: fixed;
+  padding-bottom: 5%;*/
+  padding-left: .3em;
+  padding-right: .3em;
+}
+
+ion-content {
+  height: 100%;
+  --background: var(--ion-color-light);
+
+  ion-radio-group {
+
+    ion-list-header {
+      ion-label {
+        margin-bottom: -10px;
+      }
+    }
+
+    ion-item {
+      margin-bottom: -18px;
+    }
+
+    ion-radio {
+      width: 12px;
+      height: 12px;
+    }
+
+    ion-label {
+      font-size: 12px;
+      font-family: var(--ion-font-primary);
+      font-weight: 600;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-flow: column;
+    display: block;
+  }
+
+  .check {
+    margin-left: 25%;
+    margin-top: 10%;
+    color: var(--ion-color-danger);
+  }
+
+  ion-button {
+    margin-top: -15%;
+    --border-radius: 0.5rem;
+  }
+
+  form {
+    margin-top: 10px;
+
+    ion-label {
+      color: var(--ion-color-dark);
+    }
+
+    ion-item {
+      width: 90%;
+      margin-bottom: 5px;
+      color: var(--ion-color-dark);
+      --background: var(--ion-color-light);
+      border: solid 2px var(--ion-color-e7ebee);
+    }
+
+    ion-radio {
+      font-size: 12px;
+      color: var(--ion-color-primary-contrast);
+      background-color: var(--ion-color-primary-contrast);
+      border-radius: 50px;
+    }
+
+    .centerpanel2 {
+      font-size: 10px;
+      width: 95%;
+      margin: auto;
+      // height:100%;
+      text-align: center;
+      display: grid;
+      grid-template-columns: 44% 56%;
+    }
+
+    .left2 {
+    }
+
+    .right2 {
+      // height: 150%;
+    }
+  }
+
+  ion-item {
+    width: 100%;
+    margin: 0 auto;
+    color: var(--ion-color-dark);
+    --background: var(--ion-color-light);
+    border: solid 1px var(--ion-color-light);
+  }
+
+  ion-list {
+    background-color: var(--ion-color-light);
+  }
+
+  ion-label {
+    font-size: 12px;
+    font-family: var(--ion-font-primary);
+    font-weight: 600;
+  }
+
+  
+
+  ion-input {
+    font-size: 12px;
+    font-family: var(--ion-font-primary);
+    font-weight: 400;
+  }
+}

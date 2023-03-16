@@ -1,0 +1,232 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-back-button color="dark" text=""></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			{{ 'OPEN.Title' | translate }}
+		</ion-title>
+		<!-- <ion-icon name="call"  slot="end" (click)="Contact()" style="margin-right: 5%;"></ion-icon> -->
+		<a href="tel:+4968317646555" style="margin-right: 5%; text-decoration: none; color:var(--ion-color-black);"
+			slot="end">
+			<ion-icon name="call"></ion-icon>
+		</a>
+
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<header style="background-color: var(--ion-color-primary-contrast);">
+		<ion-avatar class="image-center" style="text-align: center;">
+			<img src="./../assets/images/Logo_Saarlouis.png">
+		</ion-avatar>
+		<div style="    margin: 0 auto;width: 90%;text-align: center;">
+			<h2> <b> {{ 'OPEN.Title' | translate }}</b></h2>
+		</div> <br><br>
+	</header>
+	<div class="menu" style="background-color: var(--ion-color-primary-contrast); ">
+
+		<section style="background-color: var(--ion-color-danger-contrast) ">
+			<div [innerHTML]="template"></div>
+			<div *ngIf="!template">
+				<ion-list>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+					<ion-item mode="md">
+						<ion-label>
+							<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+			</div>
+
+			<div>
+				<!-- <div [innerHTML]="template"></div> -->
+
+				<!-- <div  style="text-align: center;">
+					<div style="    margin: 0 auto;width: 90%;text-align: center;">
+						<h5> <b><ion-label style="text-align: center;margin:0 auto;  width:50px; color: var(--ion-color-black);  text-transform: uppercase; "><b>INFORMATION</b></ion-label></b></h5>
+						<img src="./../assets/images/quesadillaOpen.jpg"alt=""  >
+					</div>
+					<div style="    margin: 0 auto;width: 90%;text-align: center;">
+					  <p>
+					  <ion-label style="color: var(--ion-color-black);" ><b>Webseite </b>  <br> <ion-icon name="globe" ></ion-icon> <a (click)="openSite()" style="color: var(--ion-color-black);"href="#">quesadilla-saarlouis.de</a> </ion-label> </p>
+					  <p>
+					  <ion-label style="color: var(--ion-color-black);" ><b>Telefonnummer  </b>  <br> <ion-icon name="call" slot="start"></ion-icon> <a href="tel:+4968317646555" > +4968317646555 </a></ion-label>
+					  </p>
+					</div> <br>
+		  
+					<div style="    margin: 0 auto;width: 90%;text-align: center;">
+						<h5 style="    text-transform: uppercase;"> <b><ion-label style="text-align: center;margin:0 auto;  width:100px; color: var(--ion-color-black);   text-transform: uppercase; "><b>OFFEN</b></ion-label></b></h5>
+						<img src="./../assets/images/quesadillaOpen3.jpg"alt=""   >
+					</div>
+					<div style="    margin: 0 auto;width: 90%;text-align: center;">
+					  <p>
+						  <ion-label  style="color: var(--ion-color-black);" ><b>SO-DO <br></b><ion-icon name="time" slot="start"></ion-icon>  09:00 - 00:00 </ion-label>
+					  <p>
+						  <ion-label style="color: var(--ion-color-black);"><b>FR-SA <br></b><ion-icon name="time" slot="start"></ion-icon>  09:00 - 02:00 </ion-label>
+					  </p>
+					  <p>
+						  <ion-label style="color:var(--ion-color-black);" ><b>SO-DO</b><br><ion-icon name="time" slot="start"></ion-icon>  09:00  - 00:00 </ion-label>
+					  </p>
+					</div> <br>
+				
+					<div style="    margin: 0 auto;width: 90%;text-align: center;">
+						<h5 style="    text-transform: uppercase;"> <b><ion-label style="text-align: center;margin:0 auto;  width:100px; color:var(--ion-color-black);"><b>KÜCHE</b></ion-label>
+						</b></h5>
+						<img src="./../assets/images/Speisen-3.jpg"alt=""  >
+					</div>
+					<div style="    margin: 0 auto;width: 90%;text-align: center;">
+					  <p>	
+					  <ion-label style="color:var(--ion-color-black);" ><b>MO-SO</b><br> <ion-icon name="time" slot="start"></ion-icon>   09:00 - 11:30<br>(FRÜHSTÜCK) </ion-label>
+					  </p>
+					  <p>
+						  <ion-label style="color:var(--ion-color-black);" ><b>MO-FR </b> <br><ion-icon name="time" slot="start"></ion-icon> 12:00 - 14:30 <br>(warmeküche) </ion-label>
+		  
+					  </p>
+					  <p>
+						  <ion-label style="color:var(--ion-color-black);"> <ion-icon name="time" slot="start"></ion-icon> 14:30 -17:30 <br>(kaffe/kuche ) </ion-label>
+		  
+					  </p>
+					  <p>
+						  <ion-label style="color:var(--ion-color-black);" > <ion-icon name="time" slot="start"></ion-icon> 17:30 - 22:00 <br>( warmeküche) </ion-label>
+		  
+					  </p>
+					  <p>
+						  <ion-label style="color:var(--ion-color-black);"><b>SA-SO</b> <br><ion-icon name="time" slot="start"></ion-icon> 12:00 - 22:00  <br> ( durchgehend warmeküche)</ion-label>
+		  
+					  </p>
+					  <p>
+						  <ion-label style	="color:var(--ion-color-black);" ><b>SO-DO</b> <br><ion-icon name="time" slot="start"></ion-icon> 09:00  - 00:00 </ion-label>
+		  
+					  </p>
+								
+					</div>
+				</div> -->
+			</div>
+
+
+
+
+		</section>
+
+	</div>
+
+
+
+
+
+	<!-- <ion-card style="background-image: url(./../assets/images/Kaffee.jpg);" >
+		<ion-card-content mode="md">
+		 
+			<ion-avatar class="image-center">
+				<img src="./../assets/images/Logo_Saarlouis.png">
+			  </ion-avatar>  <br>
+			<ion-item mode="md" class="item1">
+				<ion-label style="text-align: center;margin:0 auto;  width:100px; color: var(--ion-color-primary-contrast); "><b>{{ 'OPEN.info' | translate }}</b></ion-label>
+			</ion-item>
+			  <ion-item mode="md">
+				<ion-label style="color: var(--ion-color-primary-contrast);" ><b>{{ 'OPEN.site' | translate }}: </b>  <br> <ion-icon name="globe" ></ion-icon> <a (click)="openSite()" style="color: var(--ion-color-primary-contrast);"href="#">quesadilla-saarlouis.de</a> </ion-label>
+			</ion-item>
+			<ion-item mode="md" class="item2">
+				<ion-label style="color: var(--ion-color-primary-contrast);" ><b>{{ 'OPEN.phone' | translate }}  </b>  <br> <ion-icon name="call" slot="start"></ion-icon> <a href="tel:+4968317646555" > +4968317646555 </a></ion-label>
+			</ion-item>
+
+			  <ion-item mode="md" class="item1" style="margin-top: 13px;">
+				<ion-label style="text-align: center;margin:0 auto;  width:100px; color: var(--ion-color-primary-contrast);"><b>{{ 'OPEN.open' | translate }}</b></ion-label>
+			</ion-item>
+			<ion-item mode="md">
+				<ion-label  style="color: var(--ion-color-primary-contrast);" ><b>{{ 'OPEN.sodo' | translate }} <br></b><ion-icon name="time" slot="start"></ion-icon>  09:00 - 00:00 </ion-label>
+			</ion-item>
+			<ion-item mode="md">
+				<ion-label style="color: var(--ion-color-primary-contrast);"><b>{{ 'OPEN.frsa' | translate }} <br></b><ion-icon name="time" slot="start"></ion-icon>  09:00 - 02:00 </ion-label>
+			</ion-item>
+			<ion-item mode="md" class="item2">
+				<ion-label style="color: var(--ion-color-primary-contrast);" ><b>{{ 'OPEN.sodo' | translate }}</b><br><ion-icon name="time" slot="start"></ion-icon>  09:00  - 00:00 </ion-label>
+			</ion-item>
+
+			<ion-item mode="md" class="item1" style="margin-top: 13px;">
+				<ion-label style="text-align: center;margin:0 auto;  width:100px; color: var(--ion-color-primary-contrast);"><b>{{ 'OPEN.cuisi' | translate }}</b></ion-label>
+			</ion-item>
+			<ion-item mode="md">
+				<ion-label style="color: var(--ion-color-primary-contrast);" ><b>{{ 'OPEN.moso' | translate }}</b><br> <ion-icon name="time" slot="start"></ion-icon>   9:00 - 11:30<br>(FRÜHSTÜCK) </ion-label>
+			</ion-item>
+			<ion-item mode="md">
+				<ion-label style="color: var(--ion-color-primary-contrast);" ><b>{{ 'OPEN.mofr' | translate }} </b> <br><ion-icon name="time" slot="start"></ion-icon> 12:00 - 14:30 <br>(warmeküche) </ion-label>
+			</ion-item>
+			<ion-item mode="md">
+				<ion-label style="color: var(--ion-color-primary-contrast);"> <ion-icon name="time" slot="start"></ion-icon> 14:30 -17:30 <br>(kaffe/kuche ) </ion-label>
+			</ion-item>
+			<ion-item mode="md">
+				<ion-label style="color: var(--ion-color-primary-contrast);" > <ion-icon name="time" slot="start"></ion-icon> 17:30 - 22:00 <br>( warmeküche) </ion-label>
+			</ion-item>
+			<ion-item mode="md">
+				<ion-label style="color: var(--ion-color-primary-contrast);"><b>{{ 'OPEN.saso' | translate }} </b> <br><ion-icon name="time" slot="start"></ion-icon> 12:00 - 22:00  <br> ( durchgehend warmeküche)</ion-label>
+			</ion-item>
+			<ion-item mode="md" class="item2">
+				<ion-label style="color: var(--ion-color-primary-contrast);" ><b>{{ 'OPEN.sodo' | translate }}</b> <br><ion-icon name="time" slot="start"></ion-icon> 09:00  - 00:00 </ion-label>
+			</ion-item>
+			
+		</ion-card-content>
+	
+	  </ion-card> -->
+</ion-content>

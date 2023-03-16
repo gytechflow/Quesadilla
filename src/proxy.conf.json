@@ -1,0 +1,10 @@
+{
+    "/api/*": {
+      "target": "https://h2925736.stratoserver.net/api",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {"^/api" : ""}
+    }
+  }
+  
+  

@@ -1,0 +1,79 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button color="dark" text="" ios="" slot="icon-only"></ion-back-button>
+		</ion-buttons>
+		<ion-buttons slot="end">
+			<ion-icon name="arrow-forward" slot="icon-only" *ngIf="totalPrice > 0"
+				color="var(--ion-color-primary-contrast)" (click)="openStep3()">
+			</ion-icon>
+		</ion-buttons>
+		<ion-title color="dark" class="title">
+			{{ 'ORDER.Cart' | translate }}
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen mode="">
+
+	<ion-list lines="full">
+		<div *ngFor="let product of cartProducts; let i = index">
+			<ion-item mode="">
+
+				<ion-label>
+					<h2 (click)="ShowDescription(product)">{{product.name}}</h2>
+					<h3>{{product.note_public}}</h3>
+					<p class="price">{{product.price}} €</p>
+					<p style="text-align: center;">
+						{{product.note}}
+					</p>
+					<!-- <input type="text" value="{{product.note}}" rows="2" cols="50"> -->
+					<!-- <textarea rows="2" cols="50">
+				{{product.note}}
+				</textarea> -->
+				</ion-label>
+				<div class="counter">
+					<div class="plus" (click)="decrementQty(product)">-</div>
+					<div class="count">{{product.quantity}}</div>
+					<div class="plus" (click)="incrementQty(product)">+</div>
+				</div>
+				<div class="cart">
+					<ion-button (click)="deleteOrder(i)" style="color: var(--ion-color-primary-contrast);" class="btn">
+						<ion-icon name="close-circle-outline"></ion-icon>
+					</ion-button>
+				</div>
+			</ion-item> <br><br>
+
+		</div>
+
+		<!-- <ion-button color="danger" expand="block"> SUMME: <span>{{totalPrice}} €</span></ion-button> -->
+
+	</ion-list>
+
+	<!-- <ion-icon class="empty" *ngIf="totalPrice == 0" color="light" size="large" name="cart-outline"></ion-icon> -->
+	<img *ngIf="totalPrice == 0" class="empty" src="../../assets/images/cart-Empty.png" alt="">
+
+
+</ion-content>
+<div class="footer" style="font-family: var(--ion-font-primary);">
+	<div class="centerpanel">
+
+		<div class="left">
+			<item mode="" class="amountTitle" style="width: 100%; font-weight: 700;">
+				<ion-label slot="start" style="font-size: 200%; font-family: var(--ion-font-primary);">{{
+					'ORDER.Sum' | translate }}</ion-label>
+			</item>
+		</div>
+		<div class="right">
+			<item mode="" class="amount" style="width: 100%; font-weight: 700; ">
+				<ion-label style="font-size: 150%; font-family: var(--ion-font-primary);">{{totalPrice}}
+				</ion-label>
+				<ion-icon name="logo-euro" style="font-size: 150%; font-family: var(--ion-font-primary);">
+				</ion-icon>
+			</item>
+		</div>
+
+	</div>
+	<ion-button [disabled]="!cartProducts || totalPrice == 0 " class="next" expand="block" (click)="openStep3()"
+		style="font-family: var(--ion-font-primary);">{{ 'ORDER.Next' | translate }}</ion-button>
+</div>

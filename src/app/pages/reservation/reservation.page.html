@@ -1,0 +1,103 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon slot="icon-only" name="refresh" color="dark" (click)="refresh()"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{ 'RESERVATIONS.Title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <div *ngIf="oldBooking.length>=1" style="height: 100%;">
+    <div class="container" *ngFor="let booking of oldBooking; trackBy:trackingMethod" (click)="modalOpen(booking)">
+      <span class="first first-left">
+        {{booking.ref}}
+      </span>
+      <span class="first first-right">
+        {{getTimeFromTms(booking.datep)}}
+      </span>
+      <div class="second">
+        {{getDateFromTms(booking.datep)}}
+      </div>
+      <div class="third third-left">
+        <div class="up" style="font-size: 10px;">
+          {{booking.type}}
+        </div>
+        <div class="down">
+          {{booking.nbplace}} {{"MISC.SEATS" | translate}}
+        </div>
+      </div>
+      <div class="third third-right">
+        <span
+          style="padding:.5em; border-radius: 10px; color: white; background: var({{getBgColor(booking.percentage)}});">
+          {{getStatusAsText(booking.percentage)}}
+        </span>
+      </div>
+    </div>
+
+    <ion-infinite-scroll #infinitescroll id="infinite-scroll" threshold="100px" (ionInfinite)="getBookings()"
+      style="height: 5%; overflow: hidden;">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading Items...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <div class="main-container" *ngIf="oldBooking.length<1 && !isLoading">
+    <img src="../../../assets/icon/no_booking.svg" alt="No Orders" id="image-top">
+    <div style="text-align: center;">
+      <div style="font-size: 22px; font-weight: bold;   width: 90%; margin: auto; margin-bottom: 1em;">
+        {{'BOOKING.NO_BOOKINGS' | translate}}</div>
+      <div style="font-size: 15px; font-weight: 400;  width: 90%; margin: auto;">{{'BOOKING.NO_BOOKINGS_DESC' |
+        translate}}</div>
+    </div>
+  </div>
+
+  <div *ngIf="oldBooking.length<1 && isLoading" style="height: 100%;">
+    <div class="container">
+      <ion-skeleton-text animated class="first first-left"></ion-skeleton-text>
+      <ion-skeleton-text animated class="first first-right"></ion-skeleton-text>
+      <ion-skeleton-text animated class="second"></ion-skeleton-text>
+
+      <div class="third third-left">
+        <ion-skeleton-text animated class="up"></ion-skeleton-text>
+        <ion-skeleton-text animated class="down"></ion-skeleton-text>
+      </div>
+      <div class="third third-right">
+        <ion-skeleton-text animated class="down"></ion-skeleton-text>
+      </div>
+    </div>
+
+    <div class="container">
+      <ion-skeleton-text animated class="first first-left"></ion-skeleton-text>
+      <ion-skeleton-text animated class="first first-right"></ion-skeleton-text>
+      <ion-skeleton-text animated class="second"></ion-skeleton-text>
+
+      <div class="third third-left">
+        <ion-skeleton-text animated class="up"></ion-skeleton-text>
+        <ion-skeleton-text animated class="down"></ion-skeleton-text>
+      </div>
+      <div class="third third-right">
+        <ion-skeleton-text animated class="down"></ion-skeleton-text>
+      </div>
+    </div>
+
+    <div class="container">
+      <ion-skeleton-text animated class="first first-left"></ion-skeleton-text>
+      <ion-skeleton-text animated class="first first-right"></ion-skeleton-text>
+      <ion-skeleton-text animated class="second"></ion-skeleton-text>
+
+      <div class="third third-left">
+        <ion-skeleton-text animated class="up"></ion-skeleton-text>
+        <ion-skeleton-text animated class="down"></ion-skeleton-text>
+      </div>
+      <div class="third third-right">
+        <ion-skeleton-text animated class="down"></ion-skeleton-text>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

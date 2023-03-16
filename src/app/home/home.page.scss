@@ -1,0 +1,218 @@
+ion-header , ion-header * {
+  --background: --ion-color-primary;
+  background: var(--ion-color-primary);
+
+  ion-title {
+    color: var(--ion-color-light);
+  }
+
+  ion-icon {
+    font-size: 24px;
+  }
+}
+
+ion-list {
+  padding-left: .65em;
+  padding-right: .65em;
+}
+
+ion-list {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: 1fr;
+}
+
+ion-card {
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 1% 0%;
+  // border: 1px solid white;
+}
+
+#ion-title-ext {
+  border: 1px solid var(--ion-color-primary);
+  background: var(--ion-color-primary);
+  height: 25px;
+  width: 100%;
+  margin: 0;
+}
+
+// ion-slide{
+//   height: 50px;
+// }
+
+.default-box {
+  width: 100%;
+  line-height: 20px normal;
+  font-size: medium 16pt;
+}
+
+.default-black-title {
+  font-weight: 600;
+  font-style: normal;
+  color: var(--ion-color-dark);
+  text-align: left;
+  font-size: 25px;
+}
+
+.default-white-title {
+  font-weight: 600;
+  font-style: normal;
+  color: var(--ion-color-light);
+  text-align: left;
+  font-size: 25px;
+}
+
+
+.default-sub-black-title {
+  font-style: normal;
+  color: var(--ion-color-6b6b6b);
+  text-align: left;
+  font-size: 12px;
+  margin-top: 1.5em;
+}
+
+.right-aligned-text {
+  text-align: right;
+}
+
+#text-container {
+  padding-left: .65em;
+  padding-right: .65em;
+  margin-top: 1.5em;
+}
+
+#welcome-text {
+  color: var(--ion-color-2c2c2e);
+  font-size: 26px;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: .3em;
+  margin-bottom: .5em;
+}
+
+#goodmorning-text {
+  color: var(--ion-color-9c9c9c);
+  font-size: 17px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.first-box-type {
+  border: solid 2px var(--ion-color-D1D1D1);
+  border-right: 0px;
+  border-radius: 1px;
+  background-color: var(--ion-color-light);
+  background-size: cover 35;
+  color: var(--ion-color-383838);
+  text-align: center;
+}
+
+.second-box-type {
+  border-radius: 1px;
+  background-color: var(--ion-color-dark);
+  background-size: cover 35;
+  color: var(--ion-color-383838);
+  text-align: center;
+}
+
+.first-box {
+  display: flex;
+  flex-direction: row;
+
+  .first-box-sub-padded {
+    padding-top: 3em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+  }
+}
+
+#first-box-image {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background: url("../../assets/images/food-plate-001.png");
+  background-size: contain;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  flex: 10;
+}
+
+.first-box-sub {
+  min-width: 0;
+  flex: 10;
+}
+
+#second-box {
+  padding-top: 1.5em;
+}
+
+#third-box {
+  padding-top: 1em;
+}
+
+.parent-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .child-layer-bottom {
+    position: absolute;
+    padding: inherit;
+    top: 0;
+  }
+
+  .child-layer-top {
+    position: absolute;
+    padding: inherit;
+    top: 0;
+  }
+}
+
+#second-box-image {
+  height: 100%;
+  width: 100%;
+  padding: inherit;
+  padding-right: 3em;
+  padding-top: 2em;
+  left: 0;
+  background-image: url("../../assets/images/family-booking-001.png");
+  background-size: contain;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+}
+
+#booking-text-area {
+  padding: inherit;
+  padding-right: .5em;
+  right: 0;
+}
+
+#third-box-image {
+  height: 100%;
+  width: 100%;
+  padding: inherit;
+  padding-left: 2em;
+  right: 0;
+  background-image: url("../../assets/images/food-plate-002.png");
+  background-size: contain;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+#menu-text-area {
+  padding-top: 1.5em;
+  padding-left: 2em;
+  left: 0;
+}
+
+.sub-text{
+  //max-width: 12em;
+  max-width: 65%;
+}
+
+#booking-desc{
+  display: grid;
+  place-content: end;
+}

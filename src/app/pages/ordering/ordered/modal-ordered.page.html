@@ -1,0 +1,26 @@
+<ion-content id="content">
+  <div style="height: 70%;" (click)="close()"></div>
+  <div id="footer" style="height: 30%;">
+    <ion-toolbar>
+      <ion-buttons slot="end" style="margin-bottom: 0px;">
+        <ion-button (click)="close()">
+          <ion-icon slot="icon-only" name="close" color="primary"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <div id="title">
+      {{stringify(details.label)}}
+    </div>
+    <div id="sub-title">
+      {{stringify(details.note_public)}}
+    </div>
+    <div id="desc">
+      <p>{{stringify(details.description_split)}}</p>
+    </div>
+
+    <div class="btn">
+      <ion-button type="" color="primary" (click)="close()" class="next" expand="block">Okay
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

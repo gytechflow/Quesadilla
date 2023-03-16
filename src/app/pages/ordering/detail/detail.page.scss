@@ -1,0 +1,89 @@
+ion-header {
+
+    ion-toolbar,
+    ion-item {
+        --background: var(--ion-color-light);
+        background: var(--ion-color-light);
+    }
+
+    ion-toolbar {
+        .bordered {
+            --border-radius: 10px;
+        }
+    }
+
+    h6 {
+        color: var(--ion-color-dark);
+    }
+}
+
+ion-content {
+    --background: url("/assets/images/reservation2.jpeg") no-repeat center center / cover;
+
+    .card {
+        height: 65%;
+        width: 100%;
+        background-color: var(--ion-color-primary-contrast);
+        ;
+        position: absolute;
+        bottom: 0;
+        border-radius: 1rem 1rem 0 0;
+
+        .image {
+            position: absolute;
+            top: -6.5rem;
+            width: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        img {
+            border-top-right-radius: 50px;
+            border-top-left-radius: 50px;
+        }
+
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+
+            h6 {
+                font-weight: 700;
+                font-size: 15px !important;
+            }
+
+            p {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--ion-color-d7371d);
+
+                sup {
+                    font-size: 1.2rem;
+                    margin-left: -0.5rem;
+                }
+            }
+
+            .about {
+                margin-bottom: 2.5rem;
+
+                h1 {
+                    font-weight: 600;
+                }
+
+                p {
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        ion-footer {
+            margin-top: 60%;
+        }
+    }
+
+    .price {
+        color: var(--ion-color-success);
+    }
+}

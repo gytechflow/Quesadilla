@@ -1,0 +1,117 @@
+<ion-header class="ion-no-border">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-back-button color="dark" (click)="home()" text=""></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			{{ 'MENU.Title' | translate }}
+		</ion-title>
+
+
+	</ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+	<ion-scroll scrollY="true">
+		<!-- <iframe class='webPage'  name="samplePage" (load)="dismissLoading()" (error)="dismissLoading()" frameborder="0" scrolling="no" src= "https://quesadilla-saarlouis.de/speisekarte-embedded/"></iframe> -->
+		<!-- <iframe class='webPage' id="myFrame" name="samplePage" (load)="dismissLoading()" (error)="dismissLoading()" frameborder="0"  src= "https://quesadilla-saarlouis.de/speisekarte"></iframe> -->
+		<header style="background-color: var(--ion-color-primary-contrast);">
+
+
+			<div class="sub-title">
+				<div></div>
+				<div style="align-self: center;">{{'MENU.AUTHENTIC_HONEST_DELICIOUS' | translate}}</div>
+				<img src="./../assets/images/Logo_Saarlouis.png" slot="start">
+				<div></div>
+			</div>
+			<!--ion-icon *ngIf="!isLoading" name="cloud-offline-outline" color="dark"></ion-icon-->
+
+		</header>
+		<div class="content">
+
+			<section class="menu-container" *ngIf="!isLoading">
+				<div class="menu-item" *ngFor="let cat of categories" (click)="onMenuDetail(cat)">
+
+					<div class="menu-item-text">
+						{{cat.label}}
+					</div>
+					<div style="background-image: url('https://h2925736.stratoserver.net/viewimage.php?modulepart=category&entity=1&file={{cat.id%10}}/{{ parseInt(cat.id/10)%10 }}/{{cat.id}}/photos/{{cat.label}}.jpeg');"
+						class="menu-item-image"></div>
+				</div>
+			</section>
+
+		</div>
+		<div *ngIf=" isLoading ">
+			<ion-list>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+				<ion-item mode="md">
+					<ion-label>
+						<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>
+	</ion-scroll>
+
+</ion-content>

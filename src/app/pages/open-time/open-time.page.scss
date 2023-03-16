@@ -1,0 +1,38 @@
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-danger);
+    background: var(--ion-color-danger);
+
+  }
+
+  ion-toolbar {
+    .bordered {
+      --border-radius: 10px;
+    }
+  }
+
+}
+
+ion-content {
+  --background: var(--ion-color-light-tint);
+}
+
+.image-center {
+  margin: 0 auto;
+}
+
+
+div {
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+
+h5,
+h2 {
+  text-transform: uppercase;
+}
+
+h6 {
+  color: var(--ion-color-primary-contrast);
+}

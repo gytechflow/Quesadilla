@@ -1,0 +1,168 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-back-button color="dark" text=""></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			{{ 'ORDER.Order' | translate }}
+		</ion-title>
+
+		<!--a href="tel:+4968317646555" style="margin-right: 5%; text-decoration: none; color:var(--ion-color-black);"
+			slot="end">
+			<ion-icon name="call"></ion-icon>
+		</a-->
+
+	</ion-toolbar>
+</ion-header>
+
+<ion-content mode="">
+
+	<!--
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+<div class="element">
+
+</div>
+-->
+	<ion-list>
+		<ion-radio-group>
+			<ion-list-header>
+				<ion-label>
+					<h2>{{ 'ORDER.Choice' | translate }}</h2>
+				</ion-label>
+			</ion-list-header>
+
+			<ion-item mode="" lines="none">
+				<ion-radio slot="start" value="duesenberg" color="success" (click)="radioChecked2()"></ion-radio>
+				<ion-label>{{ 'ORDER.Comming' | translate }} </ion-label>
+			</ion-item>
+
+			<ion-item mode="" lines="none">
+				<ion-radio slot="start" value="cord" color="success" (click)="radioChecked()"></ion-radio>
+				<ion-label> {{ 'ORDER.Delivery' | translate }} </ion-label>
+			</ion-item>
+
+		</ion-radio-group>
+	</ion-list>
+
+	<form action="" [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="hide">
+		<ion-item mode="">
+			<ion-icon name="person" slot="start" color="var(--ion-color-primary-contrast)" style="margin-right: 5%;">
+			</ion-icon>
+			<ion-label position="floating">{{ 'BOOKING.Name' | translate }}</ion-label>
+			<ion-input clearInput type="text" *ngIf="items" name="names" [(ngModel)]="items.name"
+				formControlName="names" class="form-control"></ion-input>
+			<ion-input clearInput type="text" *ngIf="!items" name="names" formControlName="names" class="form-control">
+			</ion-input>
+
+		</ion-item>
+
+		<ion-item mode="">
+			<ion-icon name="call" slot="start" color="var(--ion-color-primary-contrast)" style="margin-right: 5%;">
+			</ion-icon>
+			<ion-label position="floating">{{ 'BOOKING.Phone' | translate }}</ion-label>
+			<ion-input clearInput type="text" *ngIf="items" name="phone" [(ngModel)]="items.phone"
+				formControlName="phone" class="form-control"></ion-input>
+			<ion-input clearInput type="text" *ngIf="!items" name="phone" formControlName="phone" class="form-control">
+			</ion-input>
+
+		</ion-item>
+
+		<ion-item mode="">
+			<ion-icon name="mail" slot="start" color="var(--ion-color-primary-contrast)" style="margin-right: 5%;">
+			</ion-icon>
+			<ion-label position="floating">{{ 'BOOKING.Email' | translate }}</ion-label>
+			<ion-input clearInput type="text" *ngIf="items" [(ngModel)]="items.email" name="email"
+				formControlName="email" class="form-control"></ion-input>
+			<ion-input clearInput type="text" *ngIf="!items" name="email" formControlName="email" class="form-control">
+			</ion-input>
+
+		</ion-item>
+
+		<ion-item mode="">
+			<ion-icon name="locate" slot="start" color="var(--ion-color-primary-contrast)" style="margin-right: 5%;">
+			</ion-icon>
+			<ion-label position="floating">{{ 'ORDER.Street' | translate }}</ion-label>
+			<ion-input clearInput type="text" *ngIf="SecondItems" [(ngModel)]="SecondItems.street" name="address"
+				formControlName="address" class="form-control"></ion-input>
+			<ion-input clearInput type="text" *ngIf="!SecondItems" name="address" formControlName="address"
+				class="form-control"></ion-input>
+
+		</ion-item>
+
+		<ion-list-header>
+			<ion-label>
+				<h2>{{ 'ORDER.ShippingAddress' | translate }}</h2>
+			</ion-label>
+		</ion-list-header>
+
+		<div class="centerpanel2">
+			<div class="left2">
+				<ion-item  mode="">
+					<ion-icon name="locate" slot="start" color="var(--ion-color-primary-contrast)"
+						style="margin-right: 1%;"></ion-icon>
+					<ion-label style="margin-left: 5%;" position="floating">{{ 'ORDER.Code' | translate }}</ion-label>
+					<ion-input clearInput type="text" *ngIf="SecondItems" [(ngModel)]="SecondItems.code" name="code"
+						formControlName="code" class="form-control"></ion-input>
+					<ion-input clearInput type="text" *ngIf="!SecondItems" name="code" formControlName="code"
+						class="form-control"></ion-input>
+				</ion-item><br><br>
+			</div>
+			<div class="right2">
+				<ion-item  mode="">
+					<ion-icon name="locate" slot="start" color="var(--ion-color-primary-contrast)"
+						style="margin-right: 1%;"></ion-icon>
+					<ion-label style="margin-left: 5%;" position="floating">{{ 'ORDER.Town' | translate }}</ion-label>
+					<ion-input clearInput type="text" *ngIf="SecondItems" [(ngModel)]="SecondItems.town" name="town"
+						formControlName="town" class="form-control"></ion-input>
+					<ion-input clearInput type="text" *ngIf="!SecondItems" name="town" formControlName="town"
+						class="form-control"></ion-input>
+				</ion-item><br><br><br>
+			</div>
+		</div>
+
+	</form>
+
+	<form action="" [formGroup]="form2" (ngSubmit)="onSubmit2()" *ngIf="recup">
+		<ion-item mode="">
+			<ion-icon name="person" slot="start" color="var(--ion-color-primary-contrast)" style="margin-right: 5%;">
+			</ion-icon>
+			<ion-label position="floating">{{ 'BOOKING.Name' | translate }}</ion-label>
+			<ion-input clearInput type="text" *ngIf="items" name="names" [(ngModel)]="items.name"
+				formControlName="names" class="form-control"></ion-input>
+			<ion-input clearInput type="text" *ngIf="!items" name="names" formControlName="names" class="form-control">
+			</ion-input>
+
+		</ion-item>
+
+		<ion-item mode="">
+			<ion-icon name="call" slot="start" color="var(--ion-color-primary-contrast)" style="margin-right: 5%;">
+			</ion-icon>
+			<ion-label position="floating">{{ 'BOOKING.Phone' | translate }}</ion-label>
+			<ion-input clearInput type="text" *ngIf="items" name="phone" [(ngModel)]="items.phone"
+				formControlName="phone" class="form-control"></ion-input>
+			<ion-input clearInput type="text" *ngIf="!items" name="phone" formControlName="phone" class="form-control">
+			</ion-input>
+
+		</ion-item>
+
+		<ion-item mode="">
+			<ion-icon name="mail" slot="start" color="var(--ion-color-primary-contrast)" style="margin-right: 5%;">
+			</ion-icon>
+			<ion-label position="floating">{{ 'BOOKING.Email' | translate }}</ion-label>
+			<ion-input clearInput type="text" *ngIf="items" [(ngModel)]="items.email" name="email"
+				formControlName="email" class="form-control"></ion-input>
+			<ion-input clearInput type="text" *ngIf="!items" name="email" formControlName="email" class="form-control">
+			</ion-input>
+
+		</ion-item>
+	</form>
+</ion-content>
+<ion-footer class="ion-no-border">
+	<ion-toolbar class="footer-btn">
+	  <ion-button type="submit" expand="block" [disabled]="form.invalid" color="primary" (click)="onSubmit()" *ngIf="hide">{{
+		'ORDER.Order' | translate }}</ion-button>
+		<ion-button type="submit" expand="block" [disabled]="form2.invalid" color="primary" (click)="onSubmit2()" *ngIf="recup">{{
+			'ORDER.Order' | translate }}</ion-button>
+	</ion-toolbar>
+  </ion-footer>

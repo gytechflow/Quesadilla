@@ -1,0 +1,29 @@
+<ion-content id="content">
+  <div style="height: 100%;" (click)="close()"></div>
+  <div id="footer">
+    <ion-buttons slot="icon-only" style="margin-bottom: 0px; justify-content: end;">
+      <ion-button (click)="close()" slot="end">
+        <ion-icon slot="icon-only" name="close" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="container">
+      <div class="first" style="color: var({{getColor(details.percentage)}});"> {{'BOOKING.BOOKING' | translate}}
+        {{getStatusAsText(details.percentage)}}</div>
+      <div class="second">{{details.type}}</div>
+      <div class="third-left">{{'BOOKING.BOOKING' | translate}} - ID</div>
+      <div class="third-right">{{details.ref}}</div>
+      <div class="fourth-left">{{getDateFromTms(details.datep)}}</div>
+      <div class="fourth-right">{{getTimeFromTms(details.datep)}}</div>
+      <div class="fifth">{{details.nbplace}} {{'MISC.SEATS' |translate}}</div>
+      <div class="sixth button-container">
+        <!--button (click)="close()"
+          class="retry-btn">
+          {{'MISC.RETRY' | translate}}
+        </button-->
+        <button (click)="close()" class="close-btn" id="close-btn">
+          <span>{{'MISC.CLOSE' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-content>

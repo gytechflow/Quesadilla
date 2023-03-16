@@ -1,0 +1,36 @@
+.bordered-box{
+  font-weight: 600;
+  font-size: 14px;
+  color: solid var(--ion-color-2c2c2e);
+  border-radius: 2px;
+  border-bottom: 1px solid var(--ion-color-e7ebee);
+  background: solid var(--ion-color-light);
+  margin-top: .5em;
+}
+
+#main-container{
+  border-radius: 2px;
+  border: 1px solid var(--ion-color-e7ebee);
+}
+
+#title-container{
+  font-size: 28px;
+  font-weight: 600;
+  font-style: normal;
+  color: solid var(--ion-color-2c2c2e);
+  margin-bottom: .5em;
+  margin-top: 1em;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+ion-icon{
+  color: var(--ion-color-2c2c2e);
+  margin-right: 5%;
+}
+
+.content{
+  padding-right: 1em;
+  padding-left: 1em;
+  text-align: center;
+}

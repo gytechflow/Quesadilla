@@ -1,0 +1,41 @@
+
+ion-content {
+    --background: var(--ion-color-00000045) !important;
+    
+  }
+  .container {
+    background-color: var(--ion-color-light);
+    color: var(--ion-color-dark);
+  }
+  .title {
+    padding-left: 10px;
+  }
+  .removePhoto {
+    height: 45px;
+    width: 45px;
+    background-color: var(--ion-color-e74d33);
+    border-radius: 22px;
+    margin: 0 auto;
+  }
+  .icon {
+    padding-top: 10px;
+    font-size: 24px;
+    color: var(--ion-color-light);
+  }
+  .galleryPhoto {
+    height: 45px;
+    width: 45px;
+    background-color: var(--ion-color-6f2a89);
+    border-radius: 22px;
+    margin: 0 auto;
+  }
+  .cameraPhoto {
+    height: 45px;
+    width: 45px;
+    background-color: var(--ion-color-success-shade);
+    border-radius: 22px;
+    margin: 0 auto;
+  }
+  ion-row{
+    margin: 0 auto;
+  }

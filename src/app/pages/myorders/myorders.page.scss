@@ -1,0 +1,64 @@
+ion-content {
+  margin: 0;
+  display: grid;
+  grid-auto-rows: 20%;
+  grid-auto-columns: 100%;
+  --ion-background-color: var(--ion-color-light-tint);
+}
+
+.cardre {
+  display: grid;
+  font-weight: 700;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: 20%;
+  row-gap: 1em;
+  grid-template-areas:
+    "id id"
+    "produits montant"
+    "button .";
+  border-radius: 22px;
+  background-color: var(--ion-color-light);
+  padding: 1em 1em 1em 1em;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  box-shadow: 0px 4px 4px var(--ion-color-00000045);
+}
+
+
+.montant {
+  grid-area: montant;
+  font-size: 18px;
+  color: var(--ion-color-primary);
+  text-align: right;
+}
+
+.produits {
+  grid-area: produits;
+  font-size: 14px;
+}
+
+.id {
+  grid-area: id;
+  font-size: 12px;
+}
+
+.button {
+  grid-area: button;
+  font-size: 15px;
+}
+
+.main-container {
+  display: grid;
+  //justify-items: center center;
+  justify-items: center;
+  grid-template-rows: 60% .1%;
+  width: 100%;
+  height: 100%;
+  row-gap: 2em;
+}
+
+#image-top {
+  width: 100%;
+  align-self: end;
+}

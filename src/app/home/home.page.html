@@ -1,0 +1,79 @@
+<div class="ion-page" id="main">
+  <ion-header class="ion-no-border" style="padding: 1em 0em 1em .5em;">
+    <ion-toolbar mode="ios">
+      <ion-buttons slot="secondary">
+        <ion-icon slot="start" src="./../assets/icon/menu-001.svg" size="medium" (click)="openProfile()">
+        </ion-icon>
+      </ion-buttons>
+      <ion-title>{{ 'HOME.title' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true" style="background-color:var(--ion-color-white) ;">
+
+    <!--<ion-slides [options]="slideOpts" style="background-color:var(--ion-color-white);">
+      
+      <ion-slide >
+        <ion-card mode="ios" class="card" *ngIf="mediaAv == 1">
+          <div class="wrap">  
+            <video width="277" height="150"  [fullscreen]="true" autoplay controls [muted]="'muted'" style="margin:-3px" >
+              <source  src="./../assets/videos/quesadillaVideo3.mp4">
+           </video>          
+          </div>
+            
+        </ion-card>        
+      </ion-slide>
+      <div *ngIf="mediaAv == 0" >
+        <br><br>
+      </div>
+    </ion-slides>-->
+
+    <div id="text-container">
+      <div id="goodmorning-text">{{ 'HOME.Salutation' | translate}} {{nameToGreet}}</div>
+      <div id="welcome-text">{{ 'HOME.Welcome' | translate }}</div>
+    </div>
+
+    <ion-list style="background-color:var(--ion-color-white);">
+      <ion-card  class="default-box first-box-type first-box" (click)="openOrdered()">
+        <div class="first-box-sub first-box-sub-padded">
+          <div class="default-black-title">{{ 'ORDER.Title' | translate }}</div>
+          <div class="default-sub-black-title">{{ 'HOME.OrderDescription' | translate }}</div>
+        </div>
+        <div class="first-box-sub" id="first-box-image">
+          <!--img src="./../assets/images/food-plate-001.png"-->
+        </div>
+      </ion-card>
+
+      <ion-card  class="default-box first-box-type" id="second-box" (click)="openBooking()">
+        <div class="parent-layer">
+          <div class="child-layer-bottom" id="second-box-image">
+          </div>
+          <div class="first-box-sub first-box-sub-padded child-layer-top" id="booking-text-area">
+            <div class="default-black-title right-aligned-text">{{ 'HOME.Reservations' | translate }}</div>
+            <div class="default-sub-black-title right-aligned-text sub-text" style="margin-left: auto;">{{ 'HOME.ReservationDescription' | translate }}</div>
+          </div>
+        </div>
+      </ion-card>
+
+      <ion-card class="default-box second-box-type" id="third-box" (click)="openMenu()">
+        <div class="parent-layer">
+          <div class="child-layer-bottom" id="third-box-image">
+          </div>
+          <div class="first-box-sub first-box-sub-padded child-layer-top" id="menu-text-area">
+            <div class="default-white-title ">{{ 'HOME.Menu' | translate }}</div>
+            <div class="default-sub-black-title sub-text">{{ 'HOME.MenuDescription' | translate }}</div>
+          </div>
+        </div>
+      </ion-card>
+
+      <!-- <ion-card mode="ios" (click)="openTable()">
+        <div class="wrap"><img src="./../assets/images/reservation3.jpg"></div>
+        <div class="card-title">{{ 'TABLES.Table' | translate }}</div>
+      </ion-card>
+      -->
+      <!--<ion-card mode="ios" (click)="openTime()">
+        <div class="wrap"><img src="./../assets/images/reservation4.jpg"></div>
+        <div class="card-title">{{ 'OPEN.Title' | translate }}</div>
+      </ion-card>-->
+    </ion-list>
+  </ion-content>
+</div>

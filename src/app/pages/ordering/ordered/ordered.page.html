@@ -1,0 +1,195 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-back-button color="dark" text=""></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			{{ 'ORDER.Title' | translate }}
+		</ion-title>
+		<ion-buttons (click)="openStep2()" slot="end" id="cart-button" *ngIf="categories">
+			<ion-icon name="cart" slot="icon-only"></ion-icon>
+			<ion-badge id="notification-badge" mode="ios"
+				style="position: absolute; right: -15%; top: -05%; color: var(--ion-color-primary-contrast); padding: 5px 3px 3px 5px;">
+				{{cart_quantity}}</ion-badge>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+
+	<ion-list *ngFor="let cat of categories" mode="">
+
+		<ion-list-header lines="nones" mode="">
+
+			<ion-grid mode="">
+				<ion-row (click)="Drop(cat)">
+					<ion-col size="3">
+						<ion-avatar>
+							<!--img src="./../../assets/images/drinks.jpg" /-->
+							<img src="https://h2925736.stratoserver.net/viewimage.php?modulepart=category&entity=1&file={{cat.id%10}}/{{ parseInt(cat.id/10)%10 }}/{{cat.id}}/photos/{{cat.label}}.jpeg"
+								alt="">
+						</ion-avatar>
+					</ion-col>
+					<ion-col size="6" style=" text-align: left; line-height: 150%;">
+						<p>
+							<ion-text mode="" color="dark"> {{cat.label}}</ion-text>
+						</p>
+					</ion-col>
+					<!--
+						<ion-col size="12">
+							<ion-badge id="notification-badge" *ngIf="getCountProduct(cat.id) >0 "  mode="ios" color="danger" style=" top:20px;  position: absolute;"> {{getCountProduct(cat.id)}}</ion-badge>
+							<ion-label *ngIf="getCountProduct(cat.id)==0 " style=" top:20px;  position: absolute;" > <ion-spinner color="danger" name="lines" ></ion-spinner></ion-label>
+						</ion-col>
+					-->
+					<ion-col size="3" style="display: grid; justify-items: center;">
+						<ion-icon class="icon" mode="" name="chevron-down-outline"
+							*ngIf="getCountProduct(cat.id) >0 && !cat.drop" color="dark"></ion-icon>
+						<ion-icon class="icon" mode="" name="chevron-up-outline"
+							*ngIf="getCountProduct(cat.id) >0 &&cat.drop" color="dark"></ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-list-header>
+		<div class="" *ngIf="cat.drop">
+			<div *ngFor="let product of product_categories" class="element">
+				<ion-item *ngIf="product.product_category_id == cat.id" mode="" class="ion-no-padding">
+					<ion-label>
+						<!--h2 (click)="ShowDescription(product)"> {{product.label }}  </h2-->
+						<h2 (click)="openModal(product)"> {{product.label }} </h2>
+						<h3>{{product.note_public}}</h3>
+						<p class="price">{{product.price}} €</p>
+						<ion-item lines="none" style="padding: 0px;">
+							<ion-icon slot="start" name="clipboard" id="note" color="primary" (click)="toggle(product)"
+								style="margin-right: 3%;">
+							</ion-icon>
+							<small expand="block" *ngIf="!product.ishidden" 
+							style="color: var(--ion-color-primary);
+									display: grid;
+									align-content: center;
+									overflow-wrap: normal;
+									overflow-y: hidden;"
+								(click)="toggle(product)"> {{getProductNote(product.note)
+								}}</small>
+							<ion-textarea *ngIf="product.ishidden"
+								style="background-color: var(--ion-color-light); 
+								color: var(--ion-color-dark); 
+								border-radius: 0px;
+								font-size: 12px;"
+								[(ngModel)]="product.note" placeholder="{{ 'ORDER.NoteProduct' | translate }}"
+								clearInput name="note" id="note" maxlength="100"></ion-textarea>
+						</ion-item>
+						<!-- <ion-icon name="close-circle-outline" id="note" color="light" class="cancel" (click)="hide()"></ion-icon>-->
+
+						<!-- <ion-icon name="close-circle-outline" class="cancel"  color="light"  (click)="show()"  ></ion-icon> -->
+					</ion-label>
+
+					<div class="counter">
+						<div class="plus" (click)="decrementQty(product)">-</div>
+						<div class="count">{{product.qty}}</div>
+						<div class="plus" (click)="incrementQty(product)">+</div>
+					</div>
+
+					<div class="cart">
+						<!--<ion-button [disabled]="product.disable" (click)="addtoCart(product.product_id, product.label, product.qty, product.price, product.description, product)" color="danger"  class="btn" style="height: 65px;">-->
+						<ion-button
+							(click)="addtoCart(product.product_id, product.label, product.qty, product.price, product.description, product)"
+							style="color: var(--ion-color-primary-contrast);" class="btn">
+							<ion-icon name="cart"> </ion-icon>
+						</ion-button>
+					</div>
+				</ion-item>
+			</div>
+		</div>
+
+	</ion-list>
+
+
+	<div *ngIf="!categories">
+		<ion-list>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"> </ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+			<ion-list-header>
+				<ion-label>
+					<ion-skeleton-text animated style="width: 90%;"></ion-skeleton-text>
+				</ion-label>
+			</ion-list-header>
+
+		</ion-list>
+	</div>
+</ion-content>

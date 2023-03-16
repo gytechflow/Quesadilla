@@ -1,0 +1,70 @@
+ion-content {
+  margin: 0;
+  --ion-background-color: var(--ion-color-light-tint);
+  /* pour éviter les marges */
+}
+
+.container {
+  display: grid;
+  font-weight: 700;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 20% 1em 40%;
+  grid-template-areas:
+    "first-left first-right"
+    "second second"
+    ". ."
+    "third-left third-right";
+  border-radius: 22px;
+  padding: 1em .5em 1em 2em;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: var(--ion-color-light);
+  box-shadow: 0px 4px 4px var(--ion-color-00000045);
+}
+
+.first-left {
+  grid-area: first-left;
+  text-align: left;
+  font-size: 10px;
+
+}
+
+.first-right {
+  grid-area: first-right;
+  font-size: 13px;
+  text-align: right;
+}
+
+.second {
+  font-size: 16px;
+  grid-area: second;
+}
+
+.third-left {
+  grid-area: third-left;
+  text-align: left;
+}
+
+.third-right {
+  grid-area: third-right;
+  text-align: right;
+  display: grid;
+  align-content: center;
+  justify-content: right;
+}
+
+.main-container {
+  display: grid;
+  //justify-items: center center;
+  justify-items: center;
+  grid-template-rows: 60% .1%;
+  width: 100%;
+  height: 100%;
+  row-gap: 2em;
+}
+
+#image-top {
+  width: 100%;
+  align-self: end;
+}

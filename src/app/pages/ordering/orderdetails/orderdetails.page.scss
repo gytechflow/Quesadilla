@@ -1,0 +1,104 @@
+*{
+  font-family: var(--ion-font-primary);
+}
+
+ion-content {
+  --background: var(--ion-color-light);
+  height: 100%;
+
+  .form {
+    padding: 6px 0px;
+    border-radius: 28px 28px 0 0;
+    flex: 1;
+  }
+
+  ion-card {
+    width: 100%;
+    margin: 0 auto;
+    --background: var(--ion-color-light);
+    text-align: center;
+    box-shadow: none !important;
+
+    ion-item {
+      --background: var(--ion-color-light);
+      border: solid 2px var(--ion-color-e7ebee);
+
+      ion-icon {
+        width: 15px;
+      }
+
+      ion-label {
+        font-size: 13px;
+      }
+    }
+
+    h1 {
+      color: var(--ion-color-primary);
+    }
+  }
+
+  .image-center {
+    margin: 0 auto;
+  }
+
+  .info {
+    margin-bottom: 3px;
+  }
+
+  .b {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  h6 {
+    color: var(--ion-color-primary-contrast);
+  }
+
+  .prod {
+    margin-bottom: 10%;
+  }
+
+  .table {
+    width: 100%;
+    height: 100%;
+    color: var(--ion-color-1a1a1a);
+    background-color: var(--ion-color-light);
+    border: solid 2px var(--ion-color-e7ebee);
+    border-radius: 20px;
+  }
+
+  table,
+  th,
+  td {
+    border: solid 2px var(--ion-color-e7ebee);
+  }
+
+  legend {
+    text-align: center;
+    width: 100%;
+  }
+
+  .info {
+    border-radius: 0.5rem;
+  }
+
+  .locate {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+  }
+
+  .place {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+}
+
+.btn {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  padding-bottom: 5%;
+  padding-left: .3em;
+  padding-right: .3em;
+  background: var(--ion-color-light);
+}

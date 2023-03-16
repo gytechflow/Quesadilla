@@ -1,0 +1,27 @@
+<ion-content id="content">
+  <div style="height: 100%;" (click)="close()"></div>
+  <div id="footer">
+    <ion-buttons slot="icon-only" style="margin-bottom: 0px; justify-content: end;">
+      <ion-icon (click)="close()" slot="icon-only" name="close" color="dark"></ion-icon>
+    </ion-buttons>
+    <div class="container">
+      <div class="title" style="color: var({{getColor(details.status)}});"> Order
+        {{getStatusAsText(details.status)}}</div>
+      <ion-grid class="items-list" style="max-height: 7em; overflow: scroll;">
+        <ion-row *ngFor="let item of details.lines" (click)="orderNotes(item)">
+          <ion-col size="6" style="text-align: left; max-lines: 1;">
+            {{item.libelle}}
+          </ion-col>
+          <ion-col size="6" style="text-align: right; max-lines: 1;">
+            € {{stripDecimal(item.total_ttc)}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="button-container">
+        <button (click)="close()" class="button" slot="center">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-content>

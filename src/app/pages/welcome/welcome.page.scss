@@ -1,0 +1,33 @@
+
+
+.content-wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#main-content {
+    width: 100%;
+    height: 110%;
+    background-color: var(--ion-color-light);
+    background: url('/assets/images/pizza.jpg') no-repeat 70% 110%;
+    background-size: cover;
+    overflow: hidden;
+}
+
+img {
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40%;
+}
+
+.btn {
+    display: block;
+    margin-top: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+}

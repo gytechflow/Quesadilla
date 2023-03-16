@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>    
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/" color="dark" text=""></ion-back-button>
+		</ion-buttons>
+		<ion-title>{{ 'LANGUAGE.Title' | translate }}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--
+    <ion-list >
+    <ion-item lines="none" *ngFor="let lng of languages" (click)="select(lng.value)">
+      <ion-avatar slot="start">
+        <img src="lng.img">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{lng.text}}</h2>
+      </ion-label>
+      <ion-checkbox slot="end" mode="ios" *ngIf="lng.value == selected" checked="true"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  
+-->  
+
+<ion-list >
+  <ion-radio-group value={{selected}}>
+    <ion-item lines="none" *ngFor="let lng of languages" (click)="select(lng.value)">
+      <ion-avatar slot="start">
+        <img src={{lng.img}}>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ lng.text | translate}}</h2>
+      </ion-label>
+      <ion-radio slot="end" value={{lng.value}}></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+
+</ion-content>

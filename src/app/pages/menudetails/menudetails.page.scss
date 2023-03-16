@@ -1,0 +1,48 @@
+#listContainer {
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: 25%;
+    row-gap: .4em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.listItem{
+    border: 1px solid var(--ion-color-d1d1d1);
+    padding: 1em;
+    overflow: scroll;
+}
+
+.itemLabel{
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.itemPrice{
+    text-align: center;
+    margin: .8em;
+    color: var(--ion-color-18ad31);
+    font-weight: 700;
+}
+
+.itemDesc{
+    text-align: center;
+    color: var(--ion-color-696969);
+    font-size: 15px;
+    
+}
+
+.sub-title{
+    display: grid;
+    grid-template-columns: 10% 70% 10% 10%;
+    justify-items: stretch;
+    align-items: stretch;
+    text-align: center;
+    margin-top: 1em;
+    font-weight: 700;
+    font-size: 14px;
+  }

@@ -1,0 +1,34 @@
+ion-header {
+  ion-toolbar, ion-item {
+    --background: var(--ion-color-primary);
+    background: var(--ion-color-primary);
+    
+  }
+
+  ion-toolbar {
+    .bordered {
+      --border-radius: 10px;
+      
+    }
+  }
+  ion-title{
+    color: var(--ion-color-light);;
+  }
+
+}
+ion-content{
+  --background: var(--ion-color-light);
+  background: var(--ion-color-light);
+  
+}
+.noAvailable{
+width: 90%;
+margin-left: 05%;
+//   height: 100%;
+margin-top: 50%;
+text-align: center;
+}
+.image-center{
+  margin:0 auto;
+  margin-top: 05%;
+  }

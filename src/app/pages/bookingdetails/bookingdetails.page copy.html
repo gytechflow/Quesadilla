@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+<ion-toolbar>    
+
+  <ion-buttons slot="start">
+    <ion-back-button  color="dark" (click)="home()"></ion-back-button>
+  </ion-buttons>
+  <ion-title><h6>{{ 'BOOKING.BookingDetails' | translate }}  </h6> </ion-title>
+   
+  <a href="tel:+4968317646555"  style="margin-right: 5%; text-decoration: none; color:var(--ion-color-black);" slot="end"> <ion-icon name="call" ></ion-icon></a>
+
+
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="content">
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle >
+      <ion-avatar class="image-center">
+        <img src="./../assets/images/Logo_Saarlouis.png">
+      </ion-avatar>
+    </ion-card-subtitle>
+    <!-- <ion-card-title style="text-align: center; color: var(--ion-color-primary-contrast);"> {{label}} </ion-card-title> -->
+  </ion-card-header>
+  <div class="reservation" style="background-color: var(--ion-color-danger); font-size: 20px ; color: var(--ion-color-primary-contrast); margin: 0 auto; text-align: center; border-color: black 2px;"> <b>{{ 'HOME.Reservations' | translate }} - ID </b> 
+    <br><b class="b">{{id}}</b>
+  </div>  
+  <ion-card-content mode="md">
+    <ion-item lines="none">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label><b>{{label}}</b></ion-label>
+    </ion-item>
+      <ion-item lines="none">
+        <ion-icon name="call" slot="start"></ion-icon>
+        <ion-label><b>{{numero}}</b></ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label><b>{{email}}</b> </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <ion-label><b>{{date}}</b></ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon name="time" slot="start"></ion-icon>
+        <ion-label><b>{{heure}}</b></ion-label>
+        <div > <b>  GMT{{gmt}} </b></div> 
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon name="people" slot="start"></ion-icon>
+        <ion-label><b>{{place}} {{ 'TABLES.Places' | translate }} </b></ion-label>
+      </ion-item>
+    
+    
+    
+  </ion-card-content>
+  <ion-card-subtitle style="text-align: center; color: var(--ion-color-primary-contrast);">{{dateR }} </ion-card-subtitle> <br> 
+  <!-- <ion-button type="" (click)="menu()" expand="block" class="btn"  color="danger" mode="ios"  >{{ 'MENU.Title' | translate }}</ion-button>  -->
+
+</ion-card>
+</div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+      <ion-button type="" color="danger" class="next" (click)="menu()"  expand="block"  >{{ 'MENU.Title' | translate }}</ion-button>
+    </ion-toolbar>
+</ion-footer>

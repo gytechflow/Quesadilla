@@ -1,0 +1,202 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'RESERVATIONS.Title' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content style="color:var(--ion-color-black);">
+  <div class="">
+    <!-- <div style="width: 100%;  color: var(--ion-color-primary-contrast); ">
+        <ion-icon name="call" color="var(--ion-color-primary-contrast)" slot="end" (click)="Contact()" style="margin-left: 90%;"></ion-icon>
+      </div>    -->
+    <div class="form" style="background-color: transparent;">
+      <form [formGroup]="form" (ngSubmit)="SaveBooking()">
+        <div class="form-input content">
+          <ion-input type="text" name="type_id" hidden formControlName="type_id"></ion-input>
+          <!-- <ion-input  type="text" name="type_code" hidden  formControlName="type_code" ></ion-input> -->
+          <!-- <ion-input  type="text" name="code" hidden  formControlName="code" ></ion-input> -->
+          <ion-input type="text" name="label" hidden formControlName="label"></ion-input>
+          <ion-input type="text" name="userownerid" hidden formControlName="userownerid"></ion-input>
+          <ion-input type="text" name="note_private" hidden formControlName="note_private"></ion-input>
+
+          <ion-item mode="md" class="bordered-box">
+            <!--<ion-label position="floating" color="var(--ion-color-primary-contrast)">{{ 'BOOKING.Name' | translate }}</ion-label>-->
+            <ion-input placeholder="{{ 'BOOKING.Name' | translate }}" *ngIf="items" class="mdc-text-field__input"
+              name="names" [(ngModel)]="items.name" clearInput type="text" formControlName="names" class="form-control">
+            </ion-input>
+            <ion-input placeholder="{{ 'BOOKING.Name' | translate }}" *ngIf="!items" class="mdc-text-field__input"
+              name="names" clearInput type="text" formControlName="names" class="form-control"></ion-input>
+          </ion-item>
+          <div *ngIf="form.get('names').hasError('required') && form.get('names').touched"
+            style="font-size: 12px; background-color: var(--ion-color-primary-contrast); color: var(--ion-color-danger); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; size: 5px; text-align: center;">
+            {{ 'BOOKING.RequiredName' | translate }}</div>
+
+          <ion-item mode="md" class="bordered-box">
+            <ion-input placeholder="{{ 'BOOKING.Phone' | translate }}" *ngIf="items" type="text" ng2TelInput clearInput
+              name="phone" [(ngModel)]="items.phone" formControlName="phone" class="form-control"></ion-input>
+            <ion-input placeholder="{{ 'BOOKING.Phone' | translate }}" *ngIf="!items" type="text" clearInput
+              name="phone" formControlName="phone" class="form-control"></ion-input>
+
+          </ion-item>
+          <div *ngIf="form.get('phone').hasError('required') && form.get('phone').touched"
+            style="font-size: 12px;  background-color: var(--ion-color-primary-contrast); color: var(--ion-color-danger); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; size: 5px; text-align: center;">
+            {{ 'BOOKING.RequiredPhone' | translate }}</div>
+
+          <ion-item mode="md" class="bordered-box">
+            <ion-input placeholder="{{ 'BOOKING.Email' | translate }}" *ngIf="items" type="text" clearInput name="email"
+              [(ngModel)]="items.email" formControlName="email" class="form-control"></ion-input>
+            <ion-input placeholder="{{ 'BOOKING.Email' | translate }}" *ngIf="!items" type="text" clearInput
+              name="email" formControlName="email" class="form-control" #timeValue></ion-input>
+
+          </ion-item>
+          <div *ngIf="form.get('email').hasError('required') && form.get('email').touched"
+            style=" font-size: 12px; background-color: var(--ion-color-primary-contrast); color: var(--ion-color-danger); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; size: 5px; text-align: center;">
+            {{ 'BOOKING.RequiredEmail' | translate }}</div>
+
+          <div class="period-container">
+            <div class="period" id="separator" style="flex: 1;">
+              <ion-item mode="md">
+                <ion-icon src="./../../../assets/icon/calendar-full.svg" class="period-icon" slot=""></ion-icon>
+                <ion-datetime name="datep" (ionChange)="getDate() " clearInput display-format="DD-MM-YYYY"
+                  min="{{currentDate | date:'yyyy-MM-dd'}}" formControlName="datep"
+                  placeholder="{{ 'BOOKING.Date' | translate }}" class="period-elt"></ion-datetime>
+              </ion-item>
+              <div *ngIf="form.get('datep').hasError('required') && form.get('datep').touched"
+                style="  background-color: var(--ion-color-primary-contrast); color: var(--ion-color-danger);  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 100%; text-align: center;">
+                {{ 'BOOKING.RequiredDate' | translate }}</div>
+            </div>
+            <div class="period">
+              <ion-item mode="md">
+                <ion-icon name="time" class="period-icon" slot=""></ion-icon>
+                <ion-datetime name="type_short" [min]="minTime" clearInput minuteValues="00,15,30,45"
+                  hourValues="09,10,11,12,13,14,15,16,17,18,19,20,21,22,23" display-format="HH : mm"
+                  formControlName="type_short" placeholder="{{ 'BOOKING.Time' | translate }}" class="period-elt">
+                  GMT{{germanTZ}} </ion-datetime>
+              </ion-item>
+              <div *ngIf="form.get('type_short').hasError('required') && form.get('type_short').touched"
+                style="  background-color: var(--ion-color-primary-contrast); color: var(--ion-color-danger); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 100%; text-align: center;">
+                {{ 'BOOKING.RequiredTime' | translate }}</div>
+
+            </div>
+            <!--<div class="clearfix"></div>-->
+          </div>
+          <div class="centerpanel">
+            <div>
+              <ion-item mode="md" class="bordered-box">
+                <ion-label position="floating" color="var(--ion-color-primary-contrast)" class="date2">
+                  <H6>{{ 'BOOKING.Type' | translate }}</H6>
+                </ion-label>
+
+                <ion-select name="type_id" formControlName="type_id">
+
+                  <ion-select-option *ngFor="let typeItem of types; let i=index" value="{{typeItem.value}}">
+                    {{typeItem.text}}</ion-select-option>
+
+                </ion-select>
+
+              </ion-item>
+              <div *ngIf="form.get('type_id').hasError('required') && form.get('type_id').touched"
+                style="font-size: 12px;  background-color: var(--ion-color-primary-contrast); color: var(--ion-color-danger); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 100%; text-align: center;">
+                {{ 'BOOKING.RequiredEvent' | translate }}</div>
+            </div>
+            <div>
+              <ion-item mode="md" class="bordered-box">
+                <ion-label position="floating" color="var(--ion-color-primary-contrast)">
+                  <h6>{{ 'BOOKING.Place' | translate }}</h6>
+                </ion-label>
+                <ion-select name="nbplace" formControlName="nbplace">
+
+                  <ion-select-option *ngFor="let place of places; let i=index" value="{{place+1}}">
+                    {{place+1}}</ion-select-option>
+
+                </ion-select>
+                <!--
+                <ion-input placeholder="{{ 'BOOKING.Place' | translate }}" *ngIf="items" type="text" clearInput
+                  name="nbplace" [(ngModel)]="items.place" formControlName="nbplace" class="form-control"></ion-input>
+                <ion-input placeholder="{{ 'BOOKING.Place' | translate }}" *ngIf="!items" type="text" clearInput
+                  name="nbplace" formControlName="nbplace" class="form-control"></ion-input>
+              -->
+              </ion-item>
+              <div *ngIf="form.get('nbplace').hasError('required') && form.get('nbplace').touched"
+                style="font-size: 12px;  background-color: var(--ion-color-primary-contrast); color: var(--ion-color-danger); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 100%; text-align: center;">
+                {{ 'BOOKING.RequiredPlace' | translate }}</div>
+
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <ion-item mode="md" class="bordered-box note-private">
+            <ion-textarea clearOnEdit="true" clearInput name="note_private" formControlName="note_private"
+              class="form-control note-private" placeholder="{{ 'BOOKING.Note'
+              | translate }}"></ion-textarea>
+            <!-- <ion-input *ngIf="items" class="mdc-text-field__input" name="names" [(ngModel)]="items.name" clearInput type="text" formControlName="names"  class="form-control"></ion-input>
+            <ion-input *ngIf="!items" class="mdc-text-field__input" name="names"  clearInput type="text" formControlName="names"  class="form-control"></ion-input> -->
+          </ion-item>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- <div *ngIf="!data" class="skeleton">
+    <ion-list>
+      
+      <ion-item lines="none">
+        <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div> -->
+
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="content">
+    <ion-button type="submit" expand="block" [disabled]="form.invalid" color="primary" (click)="SaveBooking()">{{
+      'BOOKING.Book' | translate }}</ion-button>
+  </ion-toolbar>
+</ion-footer>

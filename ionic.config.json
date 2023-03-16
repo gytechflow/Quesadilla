@@ -1,0 +1,8 @@
+{
+  "name": "Quesadilla",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

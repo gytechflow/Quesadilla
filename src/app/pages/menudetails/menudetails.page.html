@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+			<ion-back-button color="dark" text=""></ion-back-button>
+		</ion-buttons>
+    <ion-title>{{ 'MENU.Menu List' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="mainContainer">
+  <div class="sub-title">
+    <div></div>
+    <div style="align-self: center;">{{itemName}}</div>
+    <img src="./../assets/images/Logo_Saarlouis.png" slot="start">
+    <div></div>
+  </div>
+
+<div id="listContainer">
+  <div class="listItem" *ngFor="let detail of itemDetails">
+    <div class="itemLabel">{{detail.label}}</div>
+    <div class="itemPrice">{{detail.price}} €</div>
+    <div class="itemDesc" *ngIf="detail.description != detail.note_public"  [innerHTML]= "detail.description"></div>
+  </div>
+</div>
+</ion-content>

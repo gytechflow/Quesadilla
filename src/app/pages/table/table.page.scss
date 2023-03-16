@@ -1,0 +1,15 @@
+ion-header {
+    ion-toolbar, ion-item {
+      --background: var(--ion-color-danger-tint);
+      background: var(--ion-color-danger-tint);
+      
+    }
+  
+    ion-toolbar {
+      .bordered {
+        --border-radius: 10px;
+        
+      }
+    }
+  
+}

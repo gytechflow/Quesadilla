@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar text-center>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'PROFILE.MYACCOUNT' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="head">
+      <ion-grid style="text-align: center">
+        <ion-row class="ion-align-items-center">
+          <ion-col>
+            <ion-avatar class="avatar">
+              <ion-img [src]="image"></ion-img>
+              <div *ngIf="!response" style="margin-top: -60%;">
+                <ion-spinner name="lines" color="" class="spin"></ion-spinner>
+              </div>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <div>
+      <div class="container">
+        <ion-list class="listerner">
+          <ion-item lines="none" (click)="gotoprofil()">
+            <ion-icon slot="start" color="black" name="person-outline"></ion-icon>
+            <ion-button fill='clear' type="submit" color="dark">
+              {{'PROFILE.PROFILE' | translate}}
+            </ion-button>
+          </ion-item>
+
+          <ion-item lines="none" (click)="gotobook()">
+            <ion-icon slot="start" color="black" name="grid-outline"></ion-icon>
+            <ion-button fill='clear' type="submit" color="dark">
+              {{'BOOKING.BOOKINGS' | translate}}
+            </ion-button>
+          </ion-item>
+
+          <ion-item lines="none" (click)="gotoorder()">
+            <ion-icon slot="start" color="black" name="albums-outline"></ion-icon>
+            <ion-button fill='clear' type="submit" color="dark">
+              {{'ORDER.MYORDERS' | translate}}
+            </ion-button>
+          </ion-item>
+
+          <ion-item lines="none" (click)="gotocoupons()">
+            <ion-icon slot="start" color="black" name="ticket-outline"></ion-icon>
+            <ion-button fill='clear' type="submit" color="dark">
+              {{'COUPON.COUPONS' | translate}}
+            </ion-button>
+          </ion-item>
+
+          <ion-item lines="none" (click)="gotorefer()">
+            <ion-icon slot="start" color="black" name="people-outline"></ion-icon>
+            <ion-button fill='clear' type="submit" color="dark">
+              {{'PROFILE.REFERAFRIEND' | translate}}
+            </ion-button>
+          </ion-item>
+
+          <ion-item lines="none" (click)="gotosupport()">
+            <ion-icon slot="start" color="black" name="call-outline"></ion-icon>
+            <ion-button fill='clear' type="submit" color="dark">
+              {{'PROFILE.SUPPORT' | translate}}
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

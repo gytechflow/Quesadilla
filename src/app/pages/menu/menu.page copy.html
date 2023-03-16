@@ -1,0 +1,560 @@
+
+<ion-header class="ion-no-border">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<ion-toolbar>  
+	
+	<ion-buttons slot="start">
+		<ion-back-button color="dark" (click)="home()"></ion-back-button>
+	</ion-buttons>
+	<ion-title> <h6 style="color: var(--ion-color-primary-contrast);">{{ 'MENU.Title' | translate }}</h6> </ion-title>
+	<!-- <ion-icon name="call" slot="end" (click)="Contact()" style="margin-right: 5%;"></ion-icon> -->
+	<a href="tel:+4968317646555"  style="margin-right: 5%; text-decoration: none; color:var(--ion-color-black);" slot="end"> <ion-icon name="call" ></ion-icon></a>
+
+
+</ion-toolbar>
+</ion-header>
+
+<ion-content  mode="ios" >
+<ion-scroll scrollY="true">
+<!-- <iframe class='webPage'  name="samplePage" (load)="dismissLoading()" (error)="dismissLoading()" frameborder="0" scrolling="no" src= "https://quesadilla-saarlouis.de/speisekarte-embedded/"></iframe> -->
+<!-- <iframe class='webPage' id="myFrame" name="samplePage" (load)="dismissLoading()" (error)="dismissLoading()" frameborder="0"  src= "https://quesadilla-saarlouis.de/speisekarte"></iframe> -->
+<header style="background-color: var(--ion-color-primary-contrast);"> 
+<ion-avatar class="image-center" >
+	<img src="./../assets/images/Logo_Saarlouis.png">
+</ion-avatar> 
+	<div style="text-align: center;"><h2> <b>AUTHENTISCH.</b> <br>  <b>EHRLICH.</b> <br> <b>LECKER.</b> </h2></div> <br><br>
+	<ion-icon *ngIf="status === false"  name="cloud-offline-outline" color="dark"></ion-icon>
+
+</header>
+<div class="menu" style="background-color:  var(--ion-color-danger-contrast) "  > 
+
+<section style="background-color: var(--ion-color-primary-contrast);  " *ngIf="status === true">
+	<div class="" *ngFor="let cat of categories" >
+		<div style="text-align: center;" >
+			<h3> <b> {{cat.label}} </b></h3>
+			<img src="https://h2925736.stratoserver.net/viewimage.php?modulepart=category&entity=1&file={{cat.id%10}}/{{ parseInt(cat.id/10)%10 }}/{{cat.id}}/photos/{{cat.label}}.jpeg" alt="">
+			<hr style="height:6px;border-width:0;color:var(--ion-color-black);background-color:var(--ion-color-black)"> 
+		</div>
+		<div class="" *ngFor="let product of product_categories">
+			<div *ngIf="product.product_category_id == cat.id"   style="text-align: center; background-color: var(--ion-color-danger-contrast)">
+				<h6> <b>{{product.label}} <sup>{{product.note_public}}</sup></b> </h6>
+				<p style="color:var(--ion-color-danger)">  <b>{{product.price}} €</b></p>
+				<p  *ngIf="product.description != product.note_public"  [innerHTML]= "product.description" ></p>
+				<!-- <p *ngIf="product.description != product.note_public"  [innerHTML]= "" >{{product.description}}</p> -->
+
+				<br>
+			</div>
+		</div>	
+	</div>
+</section>
+<section style="background-color: var(--ion-color-primary-contrast);  " *ngIf="status === false">
+	<div style="text-align: center;">
+		<h3> <b>ENTRADAS</b></h3>
+		<img src="./../../../assets/images/ENTRADAS.jpeg" alt="">
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center; background-color: var(--ion-color-danger-contrast)">
+		<h6> <b>MOZZARELLA STICKS <sup> 8,a,c,e,f,g,i,j</sup></b> </h6>
+		<p style="color:var(--ion-color-danger)">  <b>5,90 € </b></p>
+		<p >Knusprige Mozzarellastangen, dazu Sour Cream und Salsa Picante.</p> <br>
+
+		<h6> <b>DIABLITOS <sup> 8,a,c,e,f,g,i,j</sup><sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>6,20 €</b></p>
+		<p>Frittierte Jalapenos gefüllt mit Frischkäse, dazu Sour Cream und Salsa Picante</p><br>
+
+		<h6> <b>CHICKEN WINGS <sup> a,c,e,f,g,i,j</sup><sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>6,90 €</b></p>
+		<p>Knusprige Chicken wings, dazu Sour Cream und Salsa Picante</p><br>
+
+		<h6> <b>CHICKEN STICKS <sup> a,c,e,f,g,i,j</sup><sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>7,20 €</b></p>
+		<p>Knusprige Hähnchenstreifen in unserer homemade Tacopanade, dazu Sour Cream und Salsa Picante</p><br>
+
+		<h6> <b>ONION RINGS<sup> 1,a,c,e,f,g,i,j</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>4,90 €</b></p>
+		<p>Knusprige Zwiebelringe, dazu Sour Cream und Salsa Picante</p><br>
+
+
+		<h6> <b>CHILI GARNELEN<sup> 8,b,f,g,i,j</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>8,90 €</b></p>
+		<p>Mit Maisbrot</p><br>
+
+		<h6> <b>CHILI CON CARNE<sup> a,e,f,g,i,j</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>7,90 €</b></p>
+		<p>Mit Maisbrot und Sour Cream</p><br>
+
+		<h6> <b>KARTOFFELWEDGES<sup> a,e,f,g,i,j</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>4,20 €</b></p>
+		<p>Knusprige Kartoffelspalten, dazu Sour Cream und Salsa Picante</p><br>
+
+
+		<h6> <b>SWEET POTATO FRIES <sup>8,A,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>5,70 €</b></p>
+		<p>Knusprige Süsskartoffelpommes, dazuSour Cream und Salsa Picante</p><br>
+
+		<!-- <h6> <b>ANTOJITOS <sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,90 €</b></p>
+		<p>Gemischter Vorspeisenteller, bestehend aus Mozzarella Sticks, Diablitos, Onion Rings, Chicken Wings, Guacamole, Sour Cream und Salsa Picante</p><br> -->
+	</div>
+
+	<div style="text-align: center;">
+		<h3> <b>ENSALADAS</b></h3>
+		<img src="./../assets/images/ENSALADAS.jpeg"alt="">
+			<p>Alle unsere Salate werden mit frischemMaisbrot serviert.</p>
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>MEXICANA<sup> 3,8,A,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>10,90 € </b></p>
+		<p >Gemischter Salat mit Mais, Kidneybohnen, Tomaten, roten Zwiebeln, Paprika, Gurken, Nachos und Guacamole</p> <br>
+
+		<h6> <b>POCOLOCO SALAT<sup> 3,8,A,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>13,20 €</b></p>
+		<p>Gemischter Salat mit gegrillten Hähnchenbruststreifen, Mais, Kidneybohnen, Tomaten, roten Zwiebeln, Paprika, Gurken, Nachos und Guacamole</p><br>
+
+		<h6> <b>TULUM<sup> 2,6,8,9</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>15,90 €</b></p>
+		<p>Gemischter Salat mit gegrillten Rindfleischstreifen, Mais, Kidneybohnen, Tomaten, roten Zwiebeln, Paprika, Gurken, Nachos und Guacamole</p><br>
+
+		<h6> <b>DE CAMARONES<sup> 3,8,A,B,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>15,90 €</b></p>
+		<p>Gemischter Salat mit gegrillten Garnelen, Mais, Kidneybohnen, Tomaten, roten Zwiebeln, Paprika, Gurken, Nachos und Guacamole</p><br>
+
+		
+	</div>
+
+	<div style="text-align: center;">
+		<h3> <b>NACHOS</b></h3>
+		<img src="./../assets/images/NACHOS.jpeg"alt="">
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>CON GUACAMOLE<sup> 3,A,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>4,20 € </b></p>
+		<p >Tortilla Chips mit hausgemachter Guacamole</p> <br>
+
+		<h6> <b>CON NOGALES<sup> 1,A,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>7,80 €</b></p>
+		<p>Tortilla chips mit Käse überbacken, dazu Sour Cream und Salsa Picante</p><br>
+
+		<h6> <b>TIJUANA<sup> 1,A,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>8,90 €</b></p>
+		<p>Tortilla chips mit gegrillten Hähnchenbruststreifen und Käse überbacken, dazu Sour Cream und Salsa Picante</p><br>
+
+		<h6> <b>CON CARNE<sup> 8,A,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>8,90 €</b></p>
+		<p>Tortilla chips mit Chili Con Carne und Käse überbacken, dazu Sour Cream und Salsa Picante</p><br>
+
+		
+	</div>
+
+
+	<!-- <div style="text-align: center;">
+		<h3> <b>HAMBURGESA</b></h3>
+		<img src="./../assets/images/Burger.jpg"alt="">
+		<P>Hamburger, serviert mit Kartoffelwedges, Sour Cream und Salsa Picante.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>CHEESEBURGER<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>12,20 € </b></p>
+		<p >100% frisches Rindfleisch mit Salat, Tomaten, Essiggurken, Schmorzwiebeln, homemade Burgersauce und Cheddarkäse</p> <br>
+
+		<h6> <b>AVOCADO BURGER VEGGIE<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>13,90 €</b></p>
+		<p>Pikanter Avocadobratling mit Salat, Tomaten, roten Zwiebeln, Guacamole und Cheddarkäse</p><br>
+
+		<h6> <b>EL FUEGO BURGER<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>13,90 €</b></p>
+		<p>100% frisches Rindfleisch, Bacon, Jalapenos, Nachos, Salat, Tomaten, Schmorzwiebeln, Chipotle-Mayo und Cheddarkäse</p><br>
+
+		<h6> <b>TACO CHICKEN BURGER<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,20 €</b></p>
+		<p>Panierte Hähnchenbrust in unserer homemade Tacopanade mit Salat, Tomaten, Schmorzwiebeln, Aioli und Cheddarkäse</p><br>
+		
+		<h6> <b>MIT SÜSSKARTOFFELPOMMES<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>+ 1,50 €</b></p>
+		<p>Panierte Hähnchenbrust in unserer homemade Tacopanade mit Salat, Tomaten, Schmorzwiebeln, Aioli und Cheddarkäse</p><br>
+
+		
+	</div> -->
+
+	<div style="text-align: center;">
+		<h3> <b>BURRITOS</b></h3>
+		<img src="./../assets/images/BURRITOS.jpeg"alt="">
+		<P>Grosse gerollte Weizentortillas, serviert mit Kartoffelwedges, Sour Cream und Salsa Picante.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<!-- <h6> <b>VEGETARIANO<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>11,90 € </b></p>
+		<p >Mit frischem Gemüse, mexikanischem Reis, Black Beans und Käse</p> <br>
+
+		<h6> <b>PECHUGA DE POLLO<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>13,90 €</b></p>
+		<p>Mit gegrillten Hähnchenbruststreifen, mexikanischem Reis, Mais, Black Beans und Käse</p><br>
+
+		<h6> <b>CARNE ASADA<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,90 €</b></p>
+		<p>Mit Rindfleischstreifen, mexikanischem Reis, Black Beans, Käse und Pico de gallo</p><br> -->
+
+		<h6> <b>CHIMICHANGA CON CARNE<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>15,20 €</b></p>
+		<p>Frittierter Burrito gefüllt mit Chili Con Carne, mexikanischem Reis, frischem Gemüse und Käse</p><br>
+		
+		<h6> <b>CHIMICHANGA DE POLO<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>15,90 €</b></p>
+		<p>Frittierter Burrito gefüllt mit gegrillten Hähnchenbruststreifen, mexikanischem Reis, frischem Gemüse und Käse</p><br>
+
+		<h6> <b>MIT SÜSSKARTOFFELPOMMES<sup>8</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>+ 1,50 €</b></p>
+		<br>
+
+		
+	</div>
+
+
+	<div style="text-align: center;">
+		<h3> <b>QUESADILLAS</b></h3>
+		<img src="./../assets/images/QUESADILLAS.jpeg"alt="">
+		<P>Gegrillte, mit Käse gefüllte Weizentortillas,serviert mit mexikanischem Reis, Sour Cream und Salsa Picante.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>QUESO<sup> 1,8,A,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>9,90 € </b></p>
+		<p >Klassisch mit Käse</p> <br>
+
+		<h6> <b>VERDURAS<sup> 1,8,A,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>12,90 €</b></p>
+		<p>Mit frischem Gemüse, Käse und Salsa</p><br>
+
+		<h6> <b>PECHUGA DE POLLO<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>13,90 €</b></p>
+		<p>Mit gegrillten Hähnchenbruststreifen, frischem Gemüse, Käse und Salsa</p><br>
+
+		<h6> <b>CARNE ASADA<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,90 €</b></p>
+		<p>Mit Rindfleischstreifen, frischem Gemüse, Käse und Pico de gallo</p><br>
+		
+		<h6> <b>CON SCAMPI<sup> 1,3,8,A,B,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>15,90 €</b></p>
+		<p>Mit Scampis, frischem Gemüse, Avocado, Käse und Salsa</p><br>
+		
+	</div>
+
+	<div style="text-align: center;">
+		<h3> <b>TACOS</b></h3>
+		<img src="./../assets/images/Tacos.jpg"alt="">
+		<P>Vier knusprige Maistacos, serviert mitKartoffelwedges, Sour Cream und Salsa Picante.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>VERDURAS<sup> 1,8,A,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>12,90 € </b></p>
+		<p >Mit frischem Gemüse, Kidneybohnen, Mais, Käse und Pico de gallo</p> <br>
+
+		<h6> <b>CON CARNE<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>13,90 €</b></p>
+		<p>Mit Chili Con Carne, Jalapenos, Käse und Pico de gallo</p><br>
+
+		<h6> <b>PECHUGA DE POLLO<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,10 €</b></p>
+		<p>Mit gegrillten Hähnchenbruststreifen, Kidneybohnen, Mais, Käse und Pico de gallo</p><br>
+
+		<h6> <b>ASADA<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,90 €</b></p>
+		<p>Mit Rindfleischstreifen, Kidneybohnen, Mais, Käse und Pico de gallo</p><br>
+		
+		<h6> <b>MIT SÜSSKARTOFFELPOMMES<sup>8</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>+ 1,50 €</b></p> <br><br>
+		
+	</div>
+
+	<div style="text-align: center;">
+		<h3> <b>ENCHILADAS</b></h3>
+		<img src="./../assets/images/ENCHILADAS.jpeg"alt="">
+		<P>Drei weiche in Tomatensauce und Käse überbackene gefüllte Tortillas, serviert mit mexikanischem Reis, Sour Cream und Salsa Picante.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>VEGETARIANO<sup> 1,8,A,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>12,90 €</b></p>
+		<p>Mit frischem Gemüse</p><br>
+
+		<h6> <b>Clásico<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>13,90 €</b></p>
+		<p>Gefüllt mit Chili Con Carne</p><br>
+
+		
+		<h6> <b>PECHUGA DE POLO<sup> 1,8,A,C,E,F,G,I,J,L</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,10 €</b></p>
+		<p>Mit gegrillten Hähnchenbruststreifen und frischem Gemüse</p><br>
+
+		<h6> <b>COM SCAMPI<sup> 1,8,A,B,C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>16,10 € </b></p>
+		<p >Mit Scampis und frischem Gemüse</p> <br>
+	</div><br><br>
+
+	<div style="text-align: center;">
+		<h3> <b>FAJITAS</b></h3>
+		<img src="./../assets/images/FAJITAS.jpeg"alt="">
+		<P>Unsere Fajitas kommen in einer heissen Gusspfanne. Dazu gibt es Weizentortillas zum selbst füllen mit Kidneybohnen, Mais, Pico de gallo, Käse, Sour Cream und Salsa Picante.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>VERDURAS<sup> 2,6,9,a,g</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>14,90 € </b></p>
+		<p >Mit frischem gegrilltem Gemüse</p> <br>
+
+		<h6> <b>PECHUGA DE POLO<sup> 2,6,9,a,g</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>16,90 €</b></p>
+		<p>Mit gegrillten Hähnchenbruststreifen und frischem Gemüse</p><br>
+
+		<h6> <b>CARNE ASADA<sup> 2,6,9,a,g</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>17,90 €</b></p>
+		<p>Mit gegrillten Rindfleischstreifen und frischem Gemüse</p><br>
+
+		<h6> <b>CON SCAMPI<sup> 2,6,9,13,a,g,i</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>18,90 €</b></p>
+		<p>Mit gegrillten Garnelen und frischem Gemüse</p><br>
+	</div><br><br>
+
+	<!-- <div style="text-align: center;">
+		<h3> <b>PATATAS HORNEADAS</b></h3>
+		<img src="./../assets/images/Patatas.jpg"alt="">
+		<P>Gebackene Kartoffel, serviert mit Maiskolben.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>VEGETARIANO<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>8,20 € </b></p>
+		<p >Gefüllt mit mexikanischem Gemüse und Käse überbacken</p> <br>
+
+		<h6> <b>CON CARNE<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>9,90 €</b></p>
+		<p>Gefüllt mit Chili Con Carne und Käse überbacken</p><br>
+	</div><br><br> -->
+
+	<div style="text-align: center;">
+		<h3 style="      text-transform: uppercase;
+		"> <b>Black Angus
+			Rumpsteak</b></h3>
+		<img src="./../assets/images/Steak.jpg"alt="">
+		<P>Rumpsteak, serviert mit Kartoffelwedges, einem Maiskolben am Spiess, Sour Cream und Salsa Picante.</P>
+
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>200 g Rumpsteak Clásico <sup> a,g</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>22,90 € </b></p>
+		<p >Mit Kräuterbutter und zwiebeln</p> <br>
+
+		<h6> <b>200 g Rumpsteak Chimichurri <sup> a,g</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>22,90 € </b></p>
+		<p >Mit Knoblauch-Kräutermarinade</p> <br>
+
+
+		<!-- <h6> <b>QUESO 200G<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>24,90 €</b></p>
+		<p>Mit Manchegokäsekruste überbacken</p><br> -->
+
+		<h6> <b>MIT SÜSSKARTOFFELPOMMES<sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>+ 1,50 €</b></p>
+		
+	</div><br><br>
+
+	<div style="text-align: center;">
+		<h3> <b>KUCHEN</b></h3>
+		<img src="./../assets/images/Kids.jpg"alt="">
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>HAUSGEMACHTEN KUCHEN <sup></sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>6,90 € </b></p>
+		<p >Täglich frisch gebacken. Serviert mit Vanilleeis, schokososse
+			und obst.</p> <br>
+	</div>
+
+	<div style="text-align: center;">
+		<h3> <b>DIPS</b></h3>
+		<img src="./../assets/images/DIPS.jpeg"alt="">
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>Guacamole<sup> 3,F,G,I,J,</sup></b></h6> 
+		<h6> <b>Salsa Picante<sup> E,F,I,J,</sup></b></h6> 
+		<h6> <b>Sour Cream<sup> G,I,J,</sup></b></h6> 
+		<h6> <b>Jalapeno Cheese<sup> 1,8,10,A,C,E,F,G,H,I,J,</sup></b></h6> 
+		<h6> <b>Chipotle - Mayo<sup> C,E,F,G,I,J</sup></b></h6> 
+		<h6> <b>Aioli<sup> C,E,F,G,I,J</sup></b></h6> 
+		<p style="color:var(--ion-color-danger)">  <b>JE 1,20 € </b></p>
+		<br>
+	</div>
+
+	<div style="text-align: center;">
+		<h3> <b>EXTRAS</b></h3>
+		<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div>
+	<div style="text-align: center;">
+		<h6> <b>Maiskolben mit Kräuterbutter<sup> G,H,I,J</sup></b></h6> 
+		<h6> <b>Beilagensalat<sup> </sup></b></h6> 
+		<h6> <b>Maisbrot mit Kräuterbutter<sup> A,C,E,F,G,H,I,J,K</sup></b></h6> 
+		<h6> <b>Ofenkartoffel mit Sour Cream<sup> G,I,J</sup></b></h6> 
+
+		<p style="color:var(--ion-color-danger)">  <b>JE 3,90 € </b></p>
+			<br>
+
+	</div>
+	<div  ><div   style="text-align: center;"><h3  ><b  > FRÜHSTÜCK </b></h3><img   alt="" >			<hr style="height:6px;border-width:0;color:var(--ion-color-danger);background-color:var(--ion-color-danger)"> 
+	</div><div  > </div><div  >    </div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >OMELETTE KLASSISCH <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >5.90 €</b></p><p  >MIT FRISCHEN KRAUTERN</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >OMELETTE MIT BACON UND ZWIEBELN <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >6.50 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >OMELETTE MIT CHORIZO UND KÄSE <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >6.90 €</b></p><p  >ALTERNATIV MIT RINDERKNOBLAUCHWURST UND KÄSE</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >OMELETTE MIT LACHS UND KÄSE <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >7.90 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >FRISCHKÄSE BAGEL <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >5.90 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >HAUSEBAGEL <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >5.90 €</b></p><p  >MIT SELBSTGEMACHTEM AUFSTRICH</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >AVOCADO BAGEL <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >6.90 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >LACHS BAGEL <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >6.90 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >PANCAKE'S MIT NUTELLA ODER AHORNSIRUP <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >5.90 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >PANCAKE'S MIT OBST UND FRUCHTSOSSE <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >6.90 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >HUEVOS RANCHEROS <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >8.50 €</b></p><p  >EIER , TOMATEN , ZWIEBELN UND PAPRIKA SERVIERT IN EINER HEISSEN GUSSPFANNE UND EINEM BRÖTCHEN</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >MIT CHORIZO <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >9.90 €</b></p><p  >ALTERNATIV MIT RINDERKNOBLAUCHWURST</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >JOGHURT <sup  >A,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >5.90 €</b></p><p  >GROSSER JOGHURT MIT OBST. HONIG,MÜSLI UND GEMISCHTEN KERNEN</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA BRÖTCHEN <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >0.70 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA KÖRNERBRÖTCHEN <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >0.90 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA CROISSANT <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >1.70 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA BUTTER, FRISCHKÄSE <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >0.50 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA MARMELADE, HONIG ODER NUTELLA <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >0.70 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA EINGELEGTE OLIVEN <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >1.50 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA RÜHREI (2 EIER) <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >2.50 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >EXTRA OBSTSALAT <sup  ></sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >3.00 €</b></p><p  ></p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >SÜSSES FRÜHSTÜCK <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >8.90 €</b></p><p  >JEWEILS 1 OFENFRISCHES BRÖTCHEN UND CROISSANT,<br>
+2 PANCAKES, BUTTER, MARMELADE, NUTELLA UND<br>
+JOGHURT MIT MÜSLI UND FRISCHEM OBST</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >VEGETARISCHES FRÜHSTÜCK <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >11.90 €</b></p><p  >2 OFENFRISCHE BRÖTCHEN, RÜHREI MIT KROSSEM BACON,<br>
+SALAMI, PUTENBRUST, SCHWARZWÄLDERSCHINKEN,<br>
+2 KÄSESORTEN, BUTTER UND JOGHURT MIT MÜSLI UND OBSiT</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >FITNESS FRÜHSTÜCK <sup  >A,C,D,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >11.90 €</b></p><p  >2 ÖFENFRISCHE KÖRNERBRÖTCHEN, RÜHREI MlT FRISCHEN<br>
+KRÄUTERN, PUTENBRUST, FRISCHKÄSE, AVOCADOCREME,GERÄUCHERTER LACHS, BUTTER,JOGHURT MIT MÜSLI UND OBST UND ORANGENSAFT 0,2Li</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >MEXIKANISCHES FRÜHSTÜCK <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >12.90 €</b></p><p  >2 OFENFRISCHE KÖRNERBRÖTCHEN, HUEVOS RANCHEROS<br>
+(EIER, CHORIZO ODER RINDERKNOBLAUCHWURST, TOMATEN,<br>
+ZWIEBELN UND PAPRIKA IN EINER HEISSEN GUSSPFANNE),<br>
+2 KÄSESORTEN, HONIG, BUTTER UND EINGELEGTE OLIVEN</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >QUESADILLA FRÜHSTÜCK <sup  >A,C,D,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >14.90 €</b></p><p  >2 OFENFRISCHE BRÖTCHEN UNfc 1 CROISSANT, RÜHREI<br>
+MIT FRISCHEN KRÄUTERN, SALAMI, KÄSEVARIÄTION,<br>
+GERÄUCHERTER LACHS, BUTTER, MARMELADE,<br>
+ORANGENSAFT 0,2L UND 1 GLAS SEKT</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >FRÜHSTÜCK FÜR ZWEI <sup  >A,C,D,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >26.90 €</b></p><p  >3 OFENFRISCHE BRÖTCHEN UNÖ 2 CROISSANTS,<br>
+4 PANCAKES, RÜHREI MIT FRISCHEN KRÄUTERN, KÄSE- UND<br>
+WÜRSTVARIATION, GERÄUCHERTER LACHS, BUTTER,<br>
+MARMELADE, NUTELLA, JOGHURT MIT MÜSLI kjND OBST,<br>
+2 GLÄSER ORANGENSAFT 0,2L (JND 2 GLÄSER SEKT</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >FÜR UNSERE KLEINEN GÄSTE <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >5.90 €</b></p><p  >1 OFENFRISCHES BRÖTCHEN 2 PANCAKE$, BUTTER,<br>
+NUTELLA UND EINE TASSE KAKAO 0,2L</p><!----><br  ></div><!----></div><div  ><div   style="text-align: center; background-color: var(--ion-color-danger-contrast)"><h6  ><b  >HERZHAFTES FRÜHSTÜCK <sup  >A,C,G</sup></b></h6><p   style="color: var(--ion-color-danger);"><b  >11.90 €</b></p><p  >2 OFENFRISCHE BRÖTCHEN, RÜHREI MIT KROSSEM BACON,<br>
+SALAMI, PUTENBRUST, SCHWARZWÄLDERSCHINKEN,<br>
+2 KÄSESORTEN, BUTTER UND JOGHURT MIT MÜSLI UND OBSiT</p><!----><br  ></div><!----></div><!----></div>
+
+	</section>
+
+</div>
+<div *ngIf=" status === true && !categories">
+<ion-list>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md"> 
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+	<ion-item mode="md">
+		<ion-label>
+			<ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+		</ion-label>
+	</ion-item>
+</ion-list>
+</div>
+<hr style="height:6px;border-width:0;color:rgb(223, 61, 61);background-color:rgb(223, 61, 61)"> 
+
+<footer id="footer">
+<div class="centerpanel"  >
+	<div class="left">
+
+		<ol style="color:var(--ion-color-black);">
+			<h5  style="color:var(--ion-color-black);"> <b>Zusatzstoffe Speisen</b></h5>
+
+			<li>mit Farbstoff</li>
+			<li>mit Konservierungsstoff</li>
+			<li>mit Antioxidationsmittel</li>
+			<li>mit Geschmacksverstärker</li>
+			<li>geschwefelt</li>
+			<li>geschwärzt</li>
+			<li>gewachst</li>
+			<li>mit Phosphat</li>
+			<li>mit Süssungsmittel</li>
+			<li>mit einer Zuckerart und Süssungsmittel</li>
+			<li>enthält eine Phenylalaninquelle</li>
+			<li>koffeinhaltig</li>
+			<li>mit Chinin</li>
+			<li>mit Alkohol</li>
+
+		</ol>
+	</div>
+	<div class="right">
+
+		<ol type="A" style="color:var(--ion-color-black);">
+			<h5  style="color:var(--ion-color-black);"> <b>Allergene Speisen</b></h5>
+
+			<li>Glutenhaltiges Getreide</li>
+			<li>Krebstiere</li>
+			<li>Eier</li>
+			<li>Fisch</li>
+			<li>Erdnüsse</li>
+			<li>Soja</li>
+			<li>Milch einschliesslich Laktose</li>
+			<li>Sellerie</li>
+			<li>Senf</li>
+			<li>Sesam</li>
+			<li>Sulfite</li>
+			<li>Lupine</li>
+			<li>Mollusken Weichtiere wie Muscheln</li>
+		</ol>
+	</div>
+</div>
+
+</footer>
+</ion-scroll>
+
+</ion-content>

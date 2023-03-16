@@ -1,0 +1,65 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon slot="icon-only" name="refresh" color="dark" (click)="refresh()"></ion-icon>
+    </ion-buttons>
+    <ion-title>My Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div *ngIf="orders.length>=1">
+    <div class="cardre" *ngFor="let order of orders; trackBy:trackingMethod" (click)="vieworders(order)">
+      <div class="id">ID - {{order.id}}</div>
+      <div class="montant">€ {{stripDecimal(order.total_ttc)}}</div>
+      <div class="produits">{{order.lines.length}} Products</div>
+      <div class="button">
+        <span style="padding:.3em; border-radius: 10px; color: white; background: var({{getColor(order.status)}});">
+          {{getStatusAsText(order.status)}}
+        </span>
+      </div>
+    </div>
+
+    <ion-infinite-scroll #infinitescroll id="infinite-scroll" threshold="100px" (ionInfinite)="getOrders()"
+      style="height: 5%; overflow: hidden;">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading Items...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <div class="main-container" *ngIf="orders.length<1 && !isLoading">
+    <img src="../../../assets/icon/no_order.svg" alt="No Orders" id="image-top">
+    <div style="text-align: center;">
+      <div style="font-size: 22px; font-weight: bold;   width: 90%; margin: auto; margin-bottom: 1em;">
+        {{'ORDER.NO_ORDERS' | translate}}</div>
+      <div style="font-size: 15px; font-weight: 400;  width: 90%; margin: auto;">{{'ORDER.NO_ORDERS_DESC' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="orders.length<1 && isLoading">
+    <div class="cardre">
+      <ion-skeleton-text animated class="id"></ion-skeleton-text>
+      <ion-skeleton-text animated class="montant"></ion-skeleton-text>
+      <ion-skeleton-text animated class="produits"></ion-skeleton-text>
+      <ion-skeleton-text animated class="button"></ion-skeleton-text>
+    </div>
+
+    <div class="cardre">
+      <ion-skeleton-text animated class="id"></ion-skeleton-text>
+      <ion-skeleton-text animated class="montant"></ion-skeleton-text>
+      <ion-skeleton-text animated class="produits"></ion-skeleton-text>
+      <ion-skeleton-text animated class="button"></ion-skeleton-text>
+    </div>
+
+    <div class="cardre">
+      <ion-skeleton-text animated class="id"></ion-skeleton-text>
+      <ion-skeleton-text animated class="montant"></ion-skeleton-text>
+      <ion-skeleton-text animated class="produits"></ion-skeleton-text>
+      <ion-skeleton-text animated class="button"></ion-skeleton-text>
+    </div>
+  </div>
+</ion-content>

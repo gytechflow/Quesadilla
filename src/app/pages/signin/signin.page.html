@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <h6>{{ 'SIGNIN.Signin' | translate }}</h6>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>{{ 'SIGNIN.Account' | translate }}</h1>
+
+
+  <form>
+    <div class="form-field">
+      <label>{{ 'SIGNIN.Email' | translate }}</label>
+      <input type="text">
+    </div>
+    <div class="form-field">
+      <label>{{ 'SIGNIN.Password' | translate }}</label>
+      <input type="password">
+    </div>
+    <ion-button expand='block' type="submit" color="primary">{{ 'SIGNIN.Signin' | translate }}</ion-button>        
+  </form>
+  <p class="footer-text">{{ 'SIGNIN.NoAccount' | translate }}<a (click)="openSignup()">{{ 'SIGNIN.Signup' | translate }}</a></p>
+</ion-content>

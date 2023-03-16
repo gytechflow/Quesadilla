@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="black" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon slot="icon-only" name="refresh" color="dark" (click)="refresh()"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{'Coupons' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div *ngIf="coupons.length>=1" style="height: 100%;">
+    <div class="cardre" *ngFor="let coupon of coupons; trackBy:trackingMethod">
+      <div class="left-box">
+        <div class="montant">€ {{stripDecimal(coupon.amount)}}</div>
+        <div class="date">{{getDateFromTms(coupon.expiry_date_tms)}}</div>
+      </div>
+      <div class="separator">
+        <p>||</p>
+        <p>||</p>
+        <p>||</p>
+      </div>
+      <button class="detail" (click)="viewcoupon(coupon)">
+        View details
+      </button>
+    </div>
+
+    <ion-infinite-scroll #infinitescroll id="infinite-scroll" threshold="100px" (ionInfinite)="getCoupons()"
+      style="height: 5%; overflow: hidden;">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading Items...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <div class="main-container" *ngIf="coupons.length<1 && !isLoading">
+    <img src="../../../assets/icon/no_coupons.svg" alt="No Orders" id="image-top">
+    <div style="text-align: center;">
+      <div style="font-size: 22px; font-weight: bold;   width: 90%; margin: auto; margin-bottom: 1em;">
+        {{'COUPON.NO_COUPON_TITLE' | translate}}</div>
+      <div style="font-size: 15px; font-weight: 400;  width: 90%; margin: auto;">{{'COUPON.NOCOUPONDESC' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="coupons.length<1 && isLoading" style="height: 100%;">
+    <div class="cardre">
+      <div class="left-box">
+        <ion-skeleton-text animated class="montant"></ion-skeleton-text>
+        <ion-skeleton-text animated class="date"></ion-skeleton-text>
+      </div>
+      <div class="separator">
+      </div>
+      <ion-skeleton-text animated class="detail"></ion-skeleton-text>
+    </div>
+
+    <div class="cardre">
+      <div class="left-box">
+        <ion-skeleton-text animated class="montant"></ion-skeleton-text>
+        <ion-skeleton-text animated class="date"></ion-skeleton-text>
+      </div>
+      <div class="separator">
+      </div>
+      <ion-skeleton-text animated class="detail"></ion-skeleton-text>
+    </div>
+
+    <div class="cardre">
+      <div class="left-box">
+        <ion-skeleton-text animated class="montant"></ion-skeleton-text>
+        <ion-skeleton-text animated class="date"></ion-skeleton-text>
+      </div>
+      <div class="separator">
+      </div>
+      <ion-skeleton-text animated class="detail"></ion-skeleton-text>
+    </div>
+  </div>
+
+</ion-content>
